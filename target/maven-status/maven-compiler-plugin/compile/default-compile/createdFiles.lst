@@ -1,2 +1,5 @@
+objects\doctor.class
+objects\patient.class
 objects\user.class
+frontend\login.class
 backend\user_CRUD.class

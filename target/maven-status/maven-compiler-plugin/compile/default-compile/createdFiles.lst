@@ -1,3 +1,4 @@
+objects\admin.class
 objects\doctor.class
 objects\patient.class
 objects\user.class

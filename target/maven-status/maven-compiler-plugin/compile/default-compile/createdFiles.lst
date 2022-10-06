@@ -1,6 +1,8 @@
 objects\admin.class
 objects\doctor.class
-objects\patient.class
-objects\user.class
 frontend\login.class
+backend\appoint_CRUD.class
+objects\patient.class
+objects\appoint.class
+objects\user.class
 backend\user_CRUD.class

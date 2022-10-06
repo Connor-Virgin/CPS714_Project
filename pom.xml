@@ -11,4 +11,23 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>com.mycompany.cps714_project.CPS714_Project</exec.mainClass>
     </properties>
+    <repositories>
+        <repository>
+            <id>com.teamdev</id>
+            <url>https://europe-maven.pkg.dev/jxbrowser/releases</url>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>com.teamdev.jxbrowser</groupId>
+            <artifactId>jxbrowser-cross-platform</artifactId>
+            <version>7.28.1</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+        <groupId>com.teamdev.jxbrowser</groupId>
+        <artifactId>jxbrowser-swing</artifactId>
+        <version>7.28.1</version>
+        </dependency>
+    </dependencies>
 </project>

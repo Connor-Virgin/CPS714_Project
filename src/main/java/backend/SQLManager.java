@@ -14,7 +14,7 @@ public class SQLManager {
         ResultSet result = null;
 
         try {
-            log.info("Loading application properties TEST");
+            log.info("Loading application properties");
             Properties properties = new Properties();
             properties.load(SQLManager.class.getClassLoader().getResourceAsStream("sql.properties"));
 

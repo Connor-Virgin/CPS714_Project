@@ -1,42 +1,94 @@
 package objects;
 
+import references.RoleTable;
+import references.StatusTable;
+
 /**
  *
  * @author Connor
  */
 public class user {
-   
-    //Instance Variables
-    String email;
-    String password;
-    
-    //Setter Classes
-    public void setEmail(String email){
-        this.email = email;
+
+    // Instance Variables
+    int user_id;
+    String first_name;
+    String last_name;
+    String address;
+    String telephone;
+    int role;
+    int status;
+
+    // Setter Classes
+    public void setFirstName(String first_name) {
+        this.first_name = first_name;
     }
-    
-    public void setPassword(String password){
-        this.password = password;
+
+    public void setLastName(String last_name) {
+        this.last_name = last_name;
     }
-    
-    //Getter Classes
-    public String getEmail(){
-        return email;
+
+    public void setAddress(String address) {
+        this.address = address;
     }
-    
-    public String getPassword(){
-        return password;
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
-    
-    //Constructor
-    public user(String email, String password){
-        this.email = email;
-        this.password = password;    
+
+    public void setRole(int role) {
+        this.role = role;
     }
-    
-    //Default Constructor
-    public user(){
-        this.email = "johnDoe@gmail.com"; 
-        this.password = "password"; 
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    // Getter Classes
+    public String setFirstName() {
+        return first_name;
+    }
+
+    public String setLastName() {
+        return last_name;
+    }
+
+    public String setAddress() {
+        return address;
+    }
+
+    public String setTelephone() {
+        return telephone;
+    }
+
+    public int setRole() {
+        return role;
+    }
+
+    public int setStatus() {
+        return status;
+    }
+
+    // Constructor
+    // For read and update
+    public user(int user_id, String first_name, String last_name, String address, String telephone, int role,
+            int status) {
+        this.user_id = user_id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.address = address;
+        this.telephone = telephone;
+        this.role = role;
+        this.status = status;
+    }
+
+    // For new user
+    public user(String first_name, String last_name, String address, String telephone, int role, int status) {
+        this(0, first_name, last_name, address, telephone, role, status);
+    }
+
+    // Default Constructor
+    public user() {
+        this("John", "Doe", "123 Lakeview Road", "4161234567", RoleTable.Patient.Id,
+                StatusTable.Outpatient.Id);
     }
 }

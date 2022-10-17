@@ -10,12 +10,9 @@ public class Doctor extends User {
     int doctorID;
 
     // Setter Classes
-    public void setDoctorID(int doctorID) {
-        this.doctorID = doctorID;
-    }
 
     // Getter Classes
-    public int getDoctorID() {
+    public int getDoctorId() {
         return doctorID;
     }
 

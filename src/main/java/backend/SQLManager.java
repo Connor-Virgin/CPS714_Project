@@ -39,6 +39,7 @@ public class SQLManager {
             connection.close();
 
             success = true;
+            log.info("Statement Execution Successful");
 
         } catch (IOException ioe) {
             log.warning("Unable to read sql connection resource");
@@ -72,6 +73,8 @@ public class SQLManager {
 
             log.info("Closing database connection");
             connection.close();
+
+            log.info("Query Execution Successful. " + lsReturnResults.size() + " results returned.");
 
         } catch (IOException ioe) {
             log.warning("Unable to read sql connection resource");

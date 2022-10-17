@@ -40,27 +40,31 @@ public class User {
     }
 
     // Getter Classes
-    public String setFirstName() {
+    public int getUserId() {
+        return user_id;
+    }
+
+    public String getFirstName() {
         return first_name;
     }
 
-    public String setLastName() {
+    public String getLastName() {
         return last_name;
     }
 
-    public String setAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public String setTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public int setRole() {
+    public int getRole() {
         return role;
     }
 
-    public int setStatus() {
+    public int getStatus() {
         return status;
     }
 

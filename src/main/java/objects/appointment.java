@@ -23,16 +23,16 @@ public class Appointment {
         this.appointment_duration_min = appointment_duration_min;
     }
 
-    public void setDoctorID(String doctor_id) {
+    public void setDoctorId(String doctor_id) {
         this.doctor_id = doctor_id;
     }
 
-    public void setPatientID(String patient_id) {
+    public void setPatientId(String patient_id) {
         this.patient_id = patient_id;
     }
 
     // Getter Classes
-    public int getAppointmentID() {
+    public int getAppointmentId() {
         return appointment_id;
     }
 
@@ -50,11 +50,11 @@ public class Appointment {
         return appointment_end;
     }
 
-    public String getDoctorID() {
+    public String getDoctorId() {
         return doctor_id;
     }
 
-    public String getPatientID() {
+    public String getPatientId() {
         return patient_id;
     }
 

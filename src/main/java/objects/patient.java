@@ -6,7 +6,7 @@ import java.util.Calendar;
  *
  * @author Connor
  */
-public class patient extends user {
+public class Patient extends User {
     // determine what attributes should be unique to patients
     int patient_id;
     String healthCard;
@@ -78,7 +78,7 @@ public class patient extends user {
 
     // Constructor
     // For read, update, delete patient+user
-    public patient(int patient_id, int user_id, String first_name, String last_name, String healthCard, String address,
+    public Patient(int patient_id, int user_id, String first_name, String last_name, String healthCard, String address,
             String telephone, Calendar birthdate, String gender, int height_cm,
             int weight_lbs, int role, int status) {
         super(user_id, first_name, last_name, address, telephone, role, status);
@@ -93,7 +93,7 @@ public class patient extends user {
     }
 
     // For INSERT new patient+user
-    public patient(String first_name, String last_name, String healthCard, String address,
+    public Patient(String first_name, String last_name, String healthCard, String address,
             String telephone, Calendar birthdate, String gender, int height_cm,
             int weight_lbs, int role, int status) {
         this(0, 0, first_name, last_name, healthCard, address,
@@ -103,7 +103,7 @@ public class patient extends user {
     }
 
     // Default Constructor
-    public patient() {
+    public Patient() {
 
     }
 }

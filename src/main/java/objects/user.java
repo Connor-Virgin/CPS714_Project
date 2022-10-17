@@ -3,11 +3,7 @@ package objects;
 import references.RoleTable;
 import references.StatusTable;
 
-/**
- *
- * @author Connor
- */
-public class user {
+public class User {
 
     // Instance Variables
     int user_id;
@@ -70,7 +66,7 @@ public class user {
 
     // Constructor
     // For read and update
-    public user(int user_id, String first_name, String last_name, String address, String telephone, int role,
+    public User(int user_id, String first_name, String last_name, String address, String telephone, int role,
             int status) {
         this.user_id = user_id;
         this.first_name = first_name;
@@ -82,12 +78,12 @@ public class user {
     }
 
     // For new user
-    public user(String first_name, String last_name, String address, String telephone, int role, int status) {
+    public User(String first_name, String last_name, String address, String telephone, int role, int status) {
         this(0, first_name, last_name, address, telephone, role, status);
     }
 
     // Default Constructor
-    public user() {
+    public User() {
         this("John", "Doe", "123 Lakeview Road", "4161234567", RoleTable.Patient.Id,
                 StatusTable.Outpatient.Id);
     }

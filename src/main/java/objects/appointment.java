@@ -6,7 +6,7 @@ import java.util.Calendar;
  *
  * @author Connor
  */
-public class appointment {
+public class Appointment {
     // Instance Variables
     int appointment_id;
     Calendar appointment_datetime;
@@ -60,7 +60,7 @@ public class appointment {
 
     // Constructor
     // For READ, UPDATE, DELETE existing appointment
-    public appointment(int appointment_id, Calendar appointment_datetime, int appointment_duration_min,
+    public Appointment(int appointment_id, Calendar appointment_datetime, int appointment_duration_min,
             String doctor_id, String patient_id) {
         this.appointment_id = appointment_id;
         this.appointment_datetime = appointment_datetime;
@@ -70,13 +70,13 @@ public class appointment {
     }
 
     // For INSERT new appointment
-    public appointment(Calendar appointment_datetime, int appointment_duration_min,
+    public Appointment(Calendar appointment_datetime, int appointment_duration_min,
             String doctor_id, String patient_id) {
         this(0, appointment_datetime, appointment_duration_min, doctor_id, patient_id);
     }
 
     // Default Constructor
-    public appointment() {
+    public Appointment() {
         /*
          * this.appointID = "0";
          * this.patientID = "0000-00-00-AA";

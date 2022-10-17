@@ -1,6 +1,6 @@
 package objects;
 
-public class account {
+public class Account {
     // Instance Variables
     int account_id;
     int user_id;
@@ -45,7 +45,7 @@ public class account {
     // Constructor
 
     // For READ, UPDATE, DELETE existing account
-    public account(int account_id, int user_id, String login, String email, String password) {
+    public Account(int account_id, int user_id, String login, String email, String password) {
         this.account_id = account_id;
         this.user_id = user_id;
         this.login = login;
@@ -54,12 +54,12 @@ public class account {
     }
 
     // For INSERT new account
-    public account(String login, String email, String password) {
+    public Account(String login, String email, String password) {
         this(0, 0, login, email, password);
     }
 
     // Default Constructor
-    public account() {
+    public Account() {
         this(0, 0, "johnDoe@gmail.com", "johnDoe@gmail.com", "password");
     }
 }

@@ -4,7 +4,7 @@ package objects;
  *
  * @author Connor
  */
-public class doctor extends user {
+public class Doctor extends User {
     // determine what attributes should be unique to doctors
     // Instance Variables
     int doctorID;
@@ -21,7 +21,7 @@ public class doctor extends user {
 
     // Constructor
     // For READ, UPDATE, DELETE existing doctor
-    public doctor(int doctorID, int user_id, String first_name, String last_name, String address, String telephone,
+    public Doctor(int doctorID, int user_id, String first_name, String last_name, String address, String telephone,
             int role,
             int status) {
         super(user_id, first_name, last_name, address, telephone, role, status);
@@ -29,14 +29,14 @@ public class doctor extends user {
     }
 
     // For INSERT new doctor
-    public doctor(String first_name, String last_name, String address, String telephone,
+    public Doctor(String first_name, String last_name, String address, String telephone,
             int role,
             int status) {
         this(0, 0, first_name, last_name, address, telephone, role, status);
     }
 
     // Default Constructor
-    public doctor() {
+    public Doctor() {
         /*
          * this.doctorID = "0000-00-00-AA";
          * this.email = "DoctorPepper@gmail.com";

@@ -59,7 +59,7 @@ public class appointment {
     }
 
     // Constructor
-    // For READ, UPDATE, DELETE appointment
+    // For READ, UPDATE, DELETE existing appointment
     public appointment(int appointment_id, Calendar appointment_datetime, int appointment_duration_min,
             String doctor_id, String patient_id) {
         this.appointment_id = appointment_id;

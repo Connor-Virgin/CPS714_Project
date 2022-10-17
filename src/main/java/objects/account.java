@@ -44,7 +44,7 @@ public class account {
 
     // Constructor
 
-    // For read and update
+    // For READ, UPDATE, DELETE existing account
     public account(int account_id, int user_id, String login, String email, String password) {
         this.account_id = account_id;
         this.user_id = user_id;
@@ -53,7 +53,7 @@ public class account {
         this.password = password;
     }
 
-    // For new account
+    // For INSERT new account
     public account(String login, String email, String password) {
         this(0, 0, login, email, password);
     }

@@ -1,7 +1,5 @@
 # CPS714_Project
-CPS714 java hospital management system project
-
-Now a webapp with Spring and Thymeleaf Implemented!
+CPS714 java hospital management system project... now a webapp with Spring and Thymeleaf Implemented!
 
 https://spring.io/
 

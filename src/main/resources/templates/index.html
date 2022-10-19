@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">    
+    <style>
+
+        body {
+            background-color: #2c2f33;
+            color: white;
+
+        }
+    </style>
+    <h1 style="color:White;font-family:verdana;font-size:36px;text-align: center;background-color:#7289da">
+
+        Place Holder GUI
+
+    </h1>
+    <center>
+        <img th:src="@{/img/H.png}" style= "width:150px;height:150px;" alt= "Hospital Logo" >
+    </center>
+    <p style="color:White;font-family:verdana;text-align: center;">
+        Login Below!
+    </p>
+    <form action="Login" method="post">
+        <table border="2" align="center" cellpadding="5" cellspacing="5">
+            <tr>
+                <td style="color:White;font-family:verdana;"> Enter username :</td>
+                <td> <input type="text" name="username" size="30"> </td>
+            </tr>
+            <tr>
+                <td style="color:White;font-family:verdana;"> Enter password :</td>
+                <td> <input type="password" name="password" size="30"> </td>
+            </tr>
+            <tr>
+                <td style="color:White;font-family:verdana;">Login Type :</td>
+                <td> 
+                    <select id="option" name="option">
+                        <option value="customer">Patient</option>
+                        <option value="hairdresser">Doctor</option>
+                    </select>
+                </td>   
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+
+                    <input type="submit" value="login" style="c">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

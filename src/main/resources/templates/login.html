@@ -20,15 +20,15 @@
     <p style="color:White;font-family:verdana;text-align: center;">
         Login Below!
     </p>
-    <form action="submit" method="post">
+    <form th:object="${login}" th:action="@{/submit}" th:method="post">
         <table border="2" align="center" cellpadding="5" cellspacing="5">
             <tr>
                 <td style="color:White;font-family:verdana;"> Enter email :</td>
-                <td> <input type="text" name="email" size="30"> </td>
+                <td> <input th:field="*{email}" type="text" name="email" size="30"> </td>
             </tr>
             <tr>
                 <td style="color:White;font-family:verdana;"> Enter password :</td>
-                <td> <input type="password" name="password" size="30"> </td>
+                <td> <input th:field="*{password}" type="password" name="password" size="30"> </td>
             </tr>
             <tr>
                 <td>

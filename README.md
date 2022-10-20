@@ -5,4 +5,4 @@ https://spring.io/
 
 https://www.thymeleaf.org/
 
-Currently when projectApplication.java is run, webapp will be accessable from http://localhost:8080/
+Currently when projectApplication.java is run, webapp will be accessable from http://localhost:8080/login

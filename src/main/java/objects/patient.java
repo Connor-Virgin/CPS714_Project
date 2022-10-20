@@ -78,10 +78,10 @@ public class Patient extends User {
 
     // Constructor
     // For read, update, delete patient+user
-    public Patient(int patient_id, int user_id, String first_name, String last_name, String healthCard, String address,
-            String telephone, Calendar birthdate, String gender, int height_cm,
-            int weight_lbs, int role, int status) {
-        super(user_id, first_name, last_name, address, telephone, role, status);
+    public Patient(int patient_id, int user_id, String user_name, String first_name, String last_name,
+            String healthCard, String email, String address, String telephone, Calendar birthdate, String gender,
+            int height_cm, int weight_lbs, int role, int status, String password) {
+        super(user_id, user_name, first_name, last_name, email, address, telephone, role, status, password);
 
         this.patient_id = patient_id;
         this.healthCard = healthCard;
@@ -93,12 +93,12 @@ public class Patient extends User {
     }
 
     // For INSERT new patient+user
-    public Patient(String first_name, String last_name, String healthCard, String address,
-            String telephone, Calendar birthdate, String gender, int height_cm,
-            int weight_lbs, int role, int status) {
-        this(0, 0, first_name, last_name, healthCard, address,
+    public Patient(String user_name, String first_name, String last_name, String healthCard, String email,
+            String address, String telephone, Calendar birthdate, String gender, int height_cm,
+            int weight_lbs, int role, int status, String password) {
+        this(0, 0, user_name, first_name, last_name, healthCard, email, address,
                 telephone, birthdate, gender, height_cm,
-                weight_lbs, role, status);
+                weight_lbs, role, status, password);
 
     }
 

@@ -10,7 +10,7 @@ import objects.User;
  *
  * @author Connor
  */
-public class CRUD_User {
+public class DB_User {
 
     private static final String USER_TABLE = "dbo.User";
 
@@ -23,24 +23,30 @@ public class CRUD_User {
         // NEW User
         if (user.getUserId() == 0) {
             sql = "INSERT INTO " + USER_TABLE + " VALUES (";
+            sql += user.getUserName() + ", ";
             sql += user.getFirstName() + ", ";
             sql += user.getLastName() + ", ";
+            sql += user.getEmail() + ", ";
             sql += user.getAddress() + ", ";
             sql += user.getTelephone() + ", ";
             sql += user.getRole() + ", ";
-            sql += user.getStatus();
+            sql += user.getStatus() + ", ";
+            sql += user.getPassword();
             sql += ")";
 
         }
         // UPDATE User
         else {
             sql = "UPDATE" + USER_TABLE + " SET ";
+            sql += "user_name = " + user.getUserName() + ", ";
             sql += "first_name = " + user.getFirstName() + ", ";
             sql += "last_name = " + user.getLastName() + ", ";
+            sql += "email = " + user.getEmail() + ", ";
             sql += "address = " + user.getAddress() + ", ";
             sql += "telephone = " + user.getTelephone() + ", ";
             sql += "role = " + user.getRole() + ", ";
             sql += "status = " + user.getStatus() + " ";
+            sql += "password = " + user.getPassword() + " ";
             sql += "WHERE user_id = " + user.getUserId();
             sql += ")";
 
@@ -96,10 +102,20 @@ public class CRUD_User {
         return false;
     }
 
-    public static User deserializeUserHashMap(HashMap<String, Object> user_map) {
-        User user = null;
-        // TODO STEP 2 of deserialization
-        return user;
+    private static User deserializeUserHashMap(HashMap<String, Object> user_map) {
+
+        int user_id = (int) user_map.get("user_id");
+        String user_name = user_map.get("user_name").toString();
+        String first_name = user_map.get("first_name").toString();
+        String last_name = user_map.get("last_name").toString();
+        String email = user_map.get("email").toString();
+        String address = user_map.get("address").toString();
+        String telephone = user_map.get("telephone").toString();
+        int role = (int) user_map.get("role");
+        int status = (int) user_map.get("status");
+        String password = user_map.get("password").toString();
+
+        return new User(user_id, user_name, first_name, last_name, email, address, telephone, role, status, password);
     }
 
 }

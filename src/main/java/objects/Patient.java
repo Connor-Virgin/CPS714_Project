@@ -2,10 +2,6 @@ package objects;
 
 import java.util.Calendar;
 
-/**
- *
- * @author Connor
- */
 public class Patient extends User {
     // determine what attributes should be unique to patients
     int patient_id;

@@ -1,9 +1,5 @@
 package objects;
 
-/**
- *
- * @author Connor
- */
 public class Doctor extends User {
     // determine what attributes should be unique to doctors
     // Instance Variables

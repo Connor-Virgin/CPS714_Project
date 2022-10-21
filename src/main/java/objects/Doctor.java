@@ -14,18 +14,16 @@ public class Doctor extends User {
 
     // Constructor
     // For READ, UPDATE, DELETE existing doctor
-    public Doctor(int doctorID, int user_id, String first_name, String last_name, String address, String telephone,
-            int role,
-            int status) {
-        super(user_id, first_name, last_name, address, telephone, role, status);
+    public Doctor(int doctorID, int user_id, String user_name, String first_name, String last_name, String email,
+            String address, String telephone, int role, int status, String password) {
+        super(user_id, user_name, first_name, last_name, email, address, telephone, role, status, password);
         this.doctorID = doctorID;
     }
 
     // For INSERT new doctor
-    public Doctor(String first_name, String last_name, String address, String telephone,
-            int role,
-            int status) {
-        this(0, 0, first_name, last_name, address, telephone, role, status);
+    public Doctor(String user_name, String first_name, String last_name, String email, String address, String telephone,
+            int role, int status, String password) {
+        this(0, 0, user_name, first_name, last_name, email, address, telephone, role, status, password);
     }
 
     // Default Constructor

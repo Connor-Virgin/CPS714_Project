@@ -39,5 +39,8 @@
             </tr>
         </table>
     </form>
+    <h2 style="color:White;font-family:verdana;font-size:36px;text-align: center;">
+        <span th:if="${errorMessage}" th:text="${errorMessage}">errorMessage</span>
+    </h2>
 </body>
 </html>

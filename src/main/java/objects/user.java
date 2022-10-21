@@ -1,7 +1,7 @@
 package objects;
 
-import references.RoleTable;
-import references.StatusTable;
+import references.Role;
+import references.Status;
 
 public class User {
 
@@ -120,8 +120,8 @@ public class User {
 
     // Default Constructor
     public User() {
-        this("jdoe", "John", "Doe", "jdoe@hospitalerp.com", "123 Lakeview Road", "4161234567", RoleTable.Patient.Id,
-                StatusTable.Outpatient.Id, "12345");
+        this("jdoe", "John", "Doe", "jdoe@hospitalerp.com", "123 Lakeview Road", "4161234567", Role.Patient.Id,
+                Status.Outpatient.Id, "12345");
     }
 
     // Telephone number cleanup
@@ -135,5 +135,10 @@ public class User {
                 : telephone_number.substring(telephone_number.length() - 10);
 
         return telephone_number;
+    }
+
+    public String toString() {
+        return user_id + " - " + last_name + ", " + first_name + " : " + Role.getById(role) + " - "
+                + Status.getById(status);
     }
 }

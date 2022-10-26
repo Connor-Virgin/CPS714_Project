@@ -6,10 +6,6 @@ import java.util.List;
 
 import objects.User;
 
-/**
- *
- * @author Connor
- */
 public class DB_User {
 
     private static final String USER_TABLE = "[dbo].[User]";

@@ -21,7 +21,6 @@ public class LoginService {
         if(userInfo == null){
             return false;
         }
-        
         return true;
     }
  

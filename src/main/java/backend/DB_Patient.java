@@ -8,10 +8,7 @@ import java.util.List;
 import objects.Patient;
 import objects.User;
 
-/**
- *
- * @author Connor
- */
+
 public class DB_Patient {
 
     private static final String PATIENT_TABLE = "[dbo].[Patient]";

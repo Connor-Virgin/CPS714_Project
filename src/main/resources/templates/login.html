@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">    
-    <style>
+<html xmlns:th="http://www.thymeleaf.org">   
 
-        body {
-            background-color: #2c2f33;
-            color: white;
+<head>
+    <link rel="stylesheet" th:href= "@{/css/style.css}"/>
+</head> 
 
-        }
-    </style>
-    <h1 style="color:White;font-family:verdana;font-size:36px;text-align: center;background-color:#7289da">
-
-        Login
-
+<body>
+    <h1>
+        Hospital ERP
     </h1>
+
     <center>
-        <img src="H.png" style= "width:150px;height:150px;" alt= "Hospital Logo">
+        <img th:src="@{/img/H.png}" style= "width:150px;height:150px;" alt= "Hospital Logo">
     </center>
-    <p style="color:White;font-family:verdana;text-align: center;">
+
+    <p>
         Login Below!
     </p>
+
     <form th:object="${login}" th:action="@{/submit}" th:method="post">
         <table border="2" align="center" cellpadding="5" cellspacing="5">
             <tr>
-                <td style="color:White;font-family:verdana;"> Enter email :</td>
+                <td> Enter email :</td>
                 <td> <input th:field="*{email}" type="text" name="email" size="30"> </td>
             </tr>
             <tr>
-                <td style="color:White;font-family:verdana;"> Enter password :</td>
+                <td> Enter password :</td>
                 <td> <input th:field="*{password}" type="password" name="password" size="30"> </td>
             </tr>
             <tr>
@@ -41,11 +40,13 @@
             </tr>
         </table>
     </form>
-    <p style="color:White;font-family:verdana;text-align: center;">
+
+    <p>
         Don't have an account with us? 
         <a href="registration.html">
             <button>Click here to register!</button>
         </a>
     </p>
+
 </body>
 </html>

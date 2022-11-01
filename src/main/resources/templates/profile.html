@@ -1,44 +1,39 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">    
-    <style>
+<html xmlns:th="http://www.thymeleaf.org">  
 
-        body {
-            background-color: #2c2f33;
-            color: white;
+<head>
+    <link rel="stylesheet" th:href= "@{/css/style.css}"/>
+</head>   
 
-        }
-    </style>
-    <h1 style="color:White;font-family:verdana;font-size:36px;text-align: center;background-color:#7289da">
-
-        Welcome Back Dhruv!
-
+    <h1>
+        Welcome Back, Dhruv!
     </h1>
     <center>
-        <img src="H.png" style= "width:150px;height:150px;" alt= "Hospital Logo">
+        <img th:src="@{/img/H.png}" style= "width:150px;height:150px;" alt= "Hospital Logo">
     </center>
 
     <form th:object="${register}" th:action="@{/submit}" th:method="post">
         <table border="2" align="center" cellpadding="5" cellspacing="5">
             <tr>
-                <td style="color:White;font-family:verdana;"> Account Type:</td>
-                <td style="color:White;font-family:verdana;"> Patient </td>
+                <td> Account Type:</td>
+                <td> Patient </td>
             </tr>
             <tr>
-                <td style="color:White;font-family:verdana;"> First Name:</td>
-                <td style="color:White;font-family:verdana;"> Dhruv </td>
+                <td> First Name:</td>
+                <td> Dhruv </td>
             </tr>
             <tr>
-                <td style="color:White;font-family:verdana;">Last Name:</td>
-                <td style="color:White;font-family:verdana;"> Sharma </td>
+                <td>Last Name:</td>
+                <td> Sharma </td>
             </tr>
             <tr>
-                <td style="color:White;font-family:verdana;"> Healthcard Number:</td>
-                <td style="color:White;font-family:verdana;"> 123456789 </td>
+                <td> Healthcard Number:</td>
+                <td> 123456789 </td>
             </tr>
             <tr>
-                <td style="color:White;font-family:verdana;"> Email Address:</td>
-                <td style="color:White;font-family:verdana;"> dhruv1.sharma@instagram.com </td>
+                <td> Email Address:</td>
+                <td> dhruv1.sharma@instagram.com </td>
             </tr>
         </table>
     </form>

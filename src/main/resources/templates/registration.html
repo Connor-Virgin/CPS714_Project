@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">    
-    <style>
 
-        body {
-            background-color: #2c2f33;
-            color: white;
+<head>
+    <link rel="stylesheet" th:href= "@{/css/style.css}"/>
+</head> 
 
-        }
-    </style>
     <h1 style="color:White;font-family:verdana;font-size:36px;text-align: center;background-color:#7289da">
 
         Registration Page
 
     </h1>
     <center>
-        <img src="H.png" style= "width:150px;height:150px;" alt= "Hospital Logo">
+        <img th:src="@{/img/H.png}" style= "width:150px;height:150px;" alt= "Hospital Logo">
     </center>
-    <p style="color:White;font-family:verdana;text-align: center;">
+
+    <p>
         Register Below!
     </p>
     <form th:object="${register}" th:action="@{/submit}" th:method="post">
         <table border="2" align="center" cellpadding="5" cellspacing="5">
             <tr>
-                <td style="color:White;font-family:verdana;"> Are you registering with us as a patient or a doctor?</td>
+                <td> Are you registering with us as a patient or a doctor?</td>
                 <td> <select name = "Choose one">
                     <option value = "Doctor" selected>Doctor</option>
                     <option value = "Patient">Patient</option>
@@ -31,23 +29,23 @@
                 </td>
             </tr>
             <tr>
-                <td style="color:White;font-family:verdana;"> Enter your First Name:</td>
+                <td> Enter your First Name:</td>
                 <td> <input th:field="*{firstname}" type="firstname" name="firstname" size="30"> </td>
             </tr>
             <tr>
-                <td style="color:White;font-family:verdana;"> Enter your Last Name:</td>
+                <td> Enter your Last Name:</td>
                 <td> <input th:field="*{lastname}" type="lastname" name="lastname" size="30"> </td>
             </tr>
             <tr>
-                <td style="color:White;font-family:verdana;"> Healthcard Number:</td>
+                <td> Healthcard Number:</td>
                 <td> <input th:field="*{healthcardnumber}" type="healthcardnumber" name="healthcardnumber" size="30"> </td>
             </tr>
             <tr>
-                <td style="color:White;font-family:verdana;"> Enter email :</td>
+                <td> Enter email :</td>
                 <td> <input th:field="*{email}" type="text" name="email" size="30"> </td>
             </tr>
             <tr>
-                <td style="color:White;font-family:verdana;"> Enter password :</td>
+                <td> Enter password :</td>
                 <td> <input th:field="*{password}" type="password" name="password" size="30"> </td>
             </tr>
         </table>

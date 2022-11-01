@@ -1,0 +1,17 @@
+
+
+body {
+    background-color: gray;;
+    color: white;
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    color:white;
+    font-size:36px
+}
+
+p{
+    font-size:15px
+}

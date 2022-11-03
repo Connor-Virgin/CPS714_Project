@@ -5,6 +5,54 @@
 <head>
     <link rel="stylesheet" th:href= "@{/css/style.css}"/>
 </head> 
+<style>
+    * {box-sizing: border-box}
+    body {font-family: "Lato", sans-serif;}
+    
+    /* Style the tab */
+    .tab {
+      float: left;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+      width: 30%;
+      height: 300px;
+    }
+    
+    /* Style the buttons inside the tab */
+    .tab button {
+      display: block;
+      background-color: inherit;
+      color: black;
+      padding: 22px 16px;
+      width: 100%;
+      border: none;
+      outline: none;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+    
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+      background-color: #ddd;
+    }
+    
+    /* Create an active/current "tab button" class */
+    .tab button.active {
+      background-color: #ccc;
+    }
+    
+    /* Style the tab content */
+    .tabcontent {
+      float: left;
+      padding: 0px 12px;
+      border: 1px solid #ccc;
+      width: 70%;
+      border-left: none;
+      height: 300px;
+    }
+    </style>
 
 <body>
     <h1>
@@ -14,6 +62,7 @@
     <center>
         <img th:src="@{/img/H.png}" style= "width:150px;height:150px;" alt= "Hospital Logo">
     </center>
+    
 
     <p>
         Welcome Dhruv please select an appointment date below! 
@@ -23,17 +72,34 @@
         <label>Calendar: </label>
         <input id="myDate" type="date" th:field="*{date}" type="text" name="date" size="30" >
         <button onclick="myFunction()">Click here to check the selected dates avaliable time!</button>
+
         <div id="appointment" style="color:black;" >
             <h2 id="dayofweek">
                 Please Select a Date!
             </h2>
-
-            <h2 id="dayofweek">
-            </h2>
-            <a href="profile.html">
-                <button id="submit" type="submit">submit appointment</button>
-            </a>
+                <button onclick="success()" id="success" >submit appointment</button>
+                <h4 id="successmsg"></h4>
+            
         </div>
+    
+          <div class="tab" id="tab">
+        </div>
+
+        <div id="London" class="tabcontent" style="display: none;">
+            <h3>9:30 am - 10 am</h3>
+            <p>avaliable</p>
+          </div>
+          
+          <div id="Paris" class="tabcontent" style="display: none;">
+            <h3>Paris</h3>
+            <p>Paris is the capital of France.</p> 
+          </div>
+          
+          <div id="Tokyo" class="tabcontent" style="display: none;">
+            <h3>Tokyo</h3>
+            <p>Tokyo is the capital of Japan.</p>
+          </div>
+
         <script>
             function myFunction() {
             var x = document.getElementById("appointment");
@@ -42,18 +108,59 @@
             x.style.display = "block";
             var NewP;
             var Text;
-            var numberoftimeslots = 16;
+            var tab; 
+            var numberoftimeslots = 4;
             for(var i = 0; i < numberoftimeslots; i++)
             {
-                NewP = document.createElement("button"); // Create a button element
-                NewP.id = i; 
-                Text = document.createTextNode("Time slot" + i); // Create text to go inside with string value of i
-                NewP.appendChild(Text); // Add text to p element
-                document.body.appendChild(NewP); // Append newly-created button element to body element in DOM tree
+                tab = document.createElement("button"); // Create a button element
+                tab.id = i; 
+                //tab.classList.add('tablinks');
+                tab.setAttribute("class", "tablinks");
+                tab.setAttribute("onclick", "openCity(event, 'London')");
+                //id="defaultOpen"
+                //.style.display = "none";
+                tab.setAttribute("id", "defaultOpen");
+                /*if(i = 0){
+                    tab.setAttribute("id", "defaultOpen");
+                }*/
+                //document.getElementById("MyElement").classList.add('MyClass');
+                //NewP = document.createElement("button"); 
+                //NewP.id = i; 
+                Text = document.createTextNode("Time slot " + i); // Create text to go inside with string value of i
+                tab.appendChild(Text); // Add text to p element
+                document.body.appendChild(tab); // Append newly-created button element to body element in DOM tree
+                document.getElementById("tab").appendChild(tab);
             }
             }
 
+            function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+            }
+
+            function success(){
+                var Text;
+                var success;
+                Text = document.createTextNode("Success");
+                document.getElementById("successmsg").appendChild(Text);
+
+            }
+            
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
         </script>
+
+        
+        
     </div>
 </body>
 </html>

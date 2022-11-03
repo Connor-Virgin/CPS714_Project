@@ -1,8 +1,10 @@
 package webApp.models;
+
 /*
- * Login model used recieve post request from view layer (html)
- * To be used to populate Account object for business services
+ * Model (object) used for displaying / receiving login information in the front end
+ * Still plan to use objects for backend/business stuff
  */
+
 public class Login {
 
     private String email;

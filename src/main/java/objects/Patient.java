@@ -2,14 +2,10 @@ package objects;
 
 import java.util.Calendar;
 
-/**
- *
- * @author Connor
- */
 public class Patient extends User {
     // determine what attributes should be unique to patients
     int patient_id;
-    String healthCard;
+    String health_card;
     Calendar birthdate;
     String gender;
     int height_cm;
@@ -17,7 +13,7 @@ public class Patient extends User {
 
     // Setter Classes
     public void setHealthCard(String healthCard) {
-        this.healthCard = healthCard;
+        this.health_card = healthCard;
     }
 
     public void setBirthdate(Calendar birthdate) {
@@ -43,7 +39,7 @@ public class Patient extends User {
     }
 
     public String getHealthCard() {
-        return healthCard;
+        return health_card;
     }
 
     public Calendar getBirthdate() {
@@ -78,13 +74,13 @@ public class Patient extends User {
 
     // Constructor
     // For read, update, delete patient+user
-    public Patient(int patient_id, int user_id, String first_name, String last_name, String healthCard, String address,
-            String telephone, Calendar birthdate, String gender, int height_cm,
-            int weight_lbs, int role, int status) {
-        super(user_id, first_name, last_name, address, telephone, role, status);
+    public Patient(int patient_id, int user_id, String user_name, String first_name, String last_name,
+            String health_card, String email, String address, String telephone, Calendar birthdate, String gender,
+            int height_cm, int weight_lbs, int role, int status, String password) {
+        super(user_id, user_name, first_name, last_name, email, address, telephone, role, status, password);
 
         this.patient_id = patient_id;
-        this.healthCard = healthCard;
+        this.health_card = health_card;
         this.birthdate = birthdate;
         this.gender = gender;
         this.height_cm = height_cm;
@@ -93,12 +89,12 @@ public class Patient extends User {
     }
 
     // For INSERT new patient+user
-    public Patient(String first_name, String last_name, String healthCard, String address,
-            String telephone, Calendar birthdate, String gender, int height_cm,
-            int weight_lbs, int role, int status) {
-        this(0, 0, first_name, last_name, healthCard, address,
+    public Patient(String user_name, String first_name, String last_name, String health_card, String email,
+            String address, String telephone, Calendar birthdate, String gender, int height_cm,
+            int weight_lbs, int role, int status, String password) {
+        this(0, 0, user_name, first_name, last_name, health_card, email, address,
                 telephone, birthdate, gender, height_cm,
-                weight_lbs, role, status);
+                weight_lbs, role, status, password);
 
     }
 

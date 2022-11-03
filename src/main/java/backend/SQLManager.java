@@ -1,9 +1,13 @@
 package backend;
 
 import java.util.*;
+import java.util.Date;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.IOException;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class SQLManager {
 
@@ -11,6 +15,7 @@ public class SQLManager {
 
     private static Connection createConnection() throws IOException, SQLException {
         // Retrieves the connection string and returns a connection object
+        log.setLevel(Level.WARNING);
         log.info("Loading application properties");
         Properties properties = new Properties();
         properties.load(SQLManager.class.getClassLoader().getResourceAsStream("sql.properties"));
@@ -31,6 +36,7 @@ public class SQLManager {
 
         try {
             Connection connection = createConnection();
+            // log.info("SQL Query: " + sqlStatement);
 
             Statement statement = connection.createStatement();
             statement.executeUpdate(sqlStatement);
@@ -108,6 +114,23 @@ public class SQLManager {
         }
 
         return list;
+    }
+
+    public static Calendar convertSQLDatetimeToCalendar(String datetime) {
+
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.ENGLISH);
+            Date date = formatter.parse(datetime);
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+
+            return cal;
+        } catch (ParseException pe) {
+            log.warning("Unable to parse Date from SQL");
+            log.warning(pe.toString());
+            return null;
+        }
     }
 
 }

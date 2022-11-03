@@ -2,10 +2,6 @@ package objects;
 
 import java.util.Calendar;
 
-/**
- *
- * @author Connor
- */
 public class Appointment {
     // Instance Variables
     int appointment_id;

@@ -41,14 +41,17 @@
         </table>
     </form>
 
-    <p>
-        Don't have an account with us? 
-        <a href="registration.html">
-            <button>Click here to register!</button>
-        </a>
-    </p>
+    <form th:action="@{/registration}" th:method="get">
+        <p>
+            Don't have an account with us? 
+            <a href="registration.html">
+                <button type="submit">Click here to register!</button>
+            </a>
+        </p>
+    </form>
+    
 
-    <h2 style="color:White;font-family:verdana;font-size:36px;text-align: center;">
+    <h2>
         <span th:if="${errorMessage}" th:text="${errorMessage}">errorMessage</span>
     </h2>
 </body>

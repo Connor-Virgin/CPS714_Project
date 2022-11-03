@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">   
+
+<head>
+    <link rel="stylesheet" th:href= "@{/css/style.css}"/>
+</head> 
+
+<body>
+    <h1>
+        Hospital ERP
+    </h1>
+
+    <center>
+        <img th:src="@{/img/H.png}" style= "width:150px;height:150px;" alt= "Hospital Logo">
+    </center>
+
+    <p>
+        Welcome Dhruv please select an appointment date below! 
+    </p>
+
+    <div class="dropdown">
+        <label>Calendar: </label>
+        <input id="myDate" type="date" th:field="*{date}" type="text" name="date" size="30" >
+        <button onclick="myFunction()">Click here to check the selected dates avaliable time!</button>
+        <div id="appointment" style="color:black;" >
+            <h2 id="dayofweek">
+                Please Select a Date!
+            </h2>
+
+            <h2 id="dayofweek">
+            </h2>
+            <a href="profile.html">
+                <button id="submit" type="submit">submit appointment</button>
+            </a>
+        </div>
+        <script>
+            function myFunction() {
+            var x = document.getElementById("appointment");
+            var dateSelected = document.getElementById("myDate").value;
+            document.getElementById("dayofweek").innerHTML = dateSelected;
+            x.style.display = "block";
+            var NewP;
+            var Text;
+            var numberoftimeslots = 16;
+            for(var i = 0; i < numberoftimeslots; i++)
+            {
+                NewP = document.createElement("button"); // Create a button element
+                NewP.id = i; 
+                Text = document.createTextNode("Time slot" + i); // Create text to go inside with string value of i
+                NewP.appendChild(Text); // Add text to p element
+                document.body.appendChild(NewP); // Append newly-created button element to body element in DOM tree
+            }
+            }
+
+        </script>
+    </div>
+</body>
+</html>

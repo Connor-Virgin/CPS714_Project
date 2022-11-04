@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"> 
+    <head>
+        <link rel="stylesheet" th:href= "@{/css/style.css}"/>
+    </head>    
+    <h1>
+        Page Demo
+    </h1>
+    <form th:action="@{/registration}" th:method="get">
+        <p>
+         
+                <button type="submit">Registration</button>
+           
+        </p>
+    </form>
+    <form th:action="@{/login}" th:method="get">
+        <p>
+       
+                <button type="submit">Login</button>
+            
+        </p>
+    </form>
+    <form th:action="@{/main}" th:method="get">
+        <p>
+        
+                <button type="submit">Main</button>
+          
+        </p>
+    </form>
+    <form th:action="@{/profile}" th:method="get">
+        <p>
+       
+                <button type="submit">Profile</button>
+       
+        </p>
+    </form>
+    <form th:action="@{/home}" th:method="get">
+        <p>
+                <button type="submit">Home</button>
+            
+        </p>
+    </form>
+</body>
+</html>

@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import webApp.models.Reg;
 import backend.DB_User;
 import objects.User;
+import references.Role;
+import references.Status;
 
 /*
  * Business layer to be used by RegistrationController
@@ -13,6 +15,15 @@ import objects.User;
 @Service
 public class RegService {
     public boolean register(Reg reg){
-        return true;
+        try {
+            User user = new User(reg.getEmail(), reg.getFirstname(), reg.getLastname(), reg.getEmail(), reg.getAddress(),
+                reg.getTelephone(),Integer.parseInt(reg.getRole()),Status.Outpatient.Id,reg.getPassword());
+
+            DB_User.createUpdateUser(user);
+            return true; 
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
     }
 }

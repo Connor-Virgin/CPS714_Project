@@ -22,9 +22,9 @@
         <table border="2" align="center" cellpadding="5" cellspacing="5">
             <tr>
                 <td> Are you registering with us as a patient or a doctor?</td>
-                <td> <select name = "Choose one">
-                    <option value = "Doctor" selected>Doctor</option>
-                    <option value = "Patient">Patient</option>
+                <td> <select th:field="*{role}" type="role" name = "Choose one">
+                    <option value = "2" selected>Doctor</option>
+                    <option value = "3">Patient</option>
                  </select> 
                 </td>
             </tr>

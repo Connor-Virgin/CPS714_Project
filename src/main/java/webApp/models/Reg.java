@@ -4,9 +4,36 @@ public class Reg {
     
     private String firstname;
     private String lastname;
-    private String healthcardnumber;
     private String email;
     private String password;
+    private String address;
+    private String telephone;
+    private String role;
+    private String healthcardnumber;
+
+    public String getAddress() {
+        return this.address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTelephone() {
+        return this.telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getRole() {
+        return this.role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getFirstname() {
         return this.firstname;
@@ -48,17 +75,22 @@ public class Reg {
         this.password = password;
     }
 
-    public Reg(String firstname, String lastname, String healthcardnumber, String email, String password){
+    public Reg(String firstname, String lastname, String email, String address, String telephone,
+    String role, String password, String healthcardnumber){
         this.firstname = firstname;
         this.lastname = lastname;
-        this.healthcardnumber = healthcardnumber;
         this.email = email;
+        this.address = address;
+        this.telephone = telephone;
+        this.role = role;
         this.password = password;
+        this.healthcardnumber = healthcardnumber;
+      
     }
 
     @Override
     public String toString(){
-        return "Login [firstname=" + firstname + ", lastname=" + lastname + "]";
+        return "Login [firstname=" + firstname + ", lastname=" + lastname + ", role=" + role + "]";
     }
     
 

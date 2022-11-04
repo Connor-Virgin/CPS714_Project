@@ -15,13 +15,15 @@ public class LoginService {
     
     //Calls to DB_User to confirm validity of login information
     public boolean doesExsist(Login login){
-
-        User userInfo = DB_User.getUser(login.getEmail(), login.getPassword());
-        
-        if(userInfo == null){
+        try{
+            User userInfo = DB_User.getUser(login.getEmail(), login.getPassword());
+            if(userInfo == null){
+                return false;
+            }
+            return true;
+        } catch(Exception e){
+            System.out.println(e);
             return false;
         }
-        return true;
     }
- 
 }

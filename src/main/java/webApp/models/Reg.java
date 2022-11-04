@@ -1,5 +1,10 @@
 package webApp.models;
 
+/*
+ * Model (object) used for displaying / receiving registration information in the front end
+ * Still plan to use objects for backend/business stuff
+ */
+
 public class Reg {
     
     private String firstname;

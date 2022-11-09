@@ -60,7 +60,7 @@ public class DB_User {
 
         boolean user_success = SQLManager.execute(sql);
 
-        return user_success ? getUser(user.getUserName()) : null;
+        return user_success ? getUserByUserName(user.getUserName()) : null;
     }
 
     //DELETE User

@@ -63,72 +63,7 @@ public class DB_User {
         return user_success ? getUser(user.getUserName()) : null;
     }
 
-    public static User getUser(int user_id) {
-        User user = null;
-        String sql;
-
-        sql = "SELECT * FROM " + USER_TABLE + " ";
-        sql += "WHERE user_id = " + user_id;
-
-        List<HashMap<String, Object>> lsUser = SQLManager.query(sql);
-
-        if (lsUser.size() >= 1) {
-            HashMap<String, Object> user_map = lsUser.get(0);
-            user = deserializeUserHashMap(user_map);
-        }
-
-        return user;
-    }
-
-    public static User getUser(String user_name) {
-        User user = null;
-        String sql;
-
-        sql = "SELECT * FROM " + USER_TABLE + " ";
-        sql += "WHERE login = '" + user_name + "'";
-
-        List<HashMap<String, Object>> lsUser = SQLManager.query(sql);
-
-        if (lsUser.size() >= 1) {
-            HashMap<String, Object> user_map = lsUser.get(0);
-            user = deserializeUserHashMap(user_map);
-        }
-
-        return user;
-    }
-
-    public static User getUser(String user_name, String password) {
-        User user = null;
-        String sql;
-
-        sql = "SELECT * FROM " + USER_TABLE + " ";
-        sql += "WHERE login = '" + user_name + "' AND password = '" + password + "'";
-
-        List<HashMap<String, Object>> lsUser = SQLManager.query(sql);
-
-        if (lsUser.size() >= 1) {
-            HashMap<String, Object> user_map = lsUser.get(0);
-            user = deserializeUserHashMap(user_map);
-        }
-
-        return user;
-    }
-
-    public static List<User> getAllUsers() {
-        List<User> users = new ArrayList<User>();
-        String sql;
-
-        sql = "SELECT * FROM " + USER_TABLE;
-
-        List<HashMap<String, Object>> lsUsers = SQLManager.query(sql);
-
-        for (HashMap<String, Object> user_map : lsUsers) {
-            users.add(deserializeUserHashMap(user_map));
-        }
-
-        return users;
-    }
-
+    //DELETE User
     public static boolean deleteUser(User user) {
 
         // Cannot delete root admin account
@@ -142,6 +77,68 @@ public class DB_User {
         }
 
         return false;
+    }
+
+    // GET User Methods
+    public static User getUserById(int user_id) {
+        String sql;
+
+        sql = "SELECT * FROM " + USER_TABLE + " ";
+        sql += "WHERE user_id = " + user_id;
+
+        return getUser(sql);
+    }
+
+    public static User getUserByUserName(String user_name) {
+        String sql;
+
+        sql = "SELECT * FROM " + USER_TABLE + " ";
+        sql += "WHERE login = '" + user_name + "'";
+
+        return getUser(sql);
+    }
+
+    public static User getUserLogin(String user_name, String password) {
+        String sql;
+
+        sql = "SELECT * FROM " + USER_TABLE + " ";
+        sql += "WHERE login = '" + user_name + "' AND password = '" + password + "'";
+
+        return getUser(sql);
+    }
+
+    public static List<User> getAllUsers() {
+        String sql;
+
+        sql = "SELECT * FROM " + USER_TABLE;
+
+        return getUsersList(sql);
+    }
+
+    //Helper functions
+    private static List<User> getUsersList(String sql) {
+        List<User> users = new ArrayList<User>();
+
+        List<HashMap<String, Object>> lsUser = SQLManager.query(sql);
+
+        for (HashMap<String, Object> user_map : lsUser) {
+            users.add(deserializeUserHashMap(user_map));
+        }
+
+        return users;
+    }
+
+    private static User getUser(String sql) {
+        User user = null;
+
+        List<HashMap<String, Object>> lsUser = SQLManager.query(sql);
+
+        if (lsUser.size() >= 1) {
+            HashMap<String, Object> user_map = lsUser.get(0);
+            user = deserializeUserHashMap(user_map);
+        }
+
+        return user;
     }
 
     private static User deserializeUserHashMap(HashMap<String, Object> user_map) {

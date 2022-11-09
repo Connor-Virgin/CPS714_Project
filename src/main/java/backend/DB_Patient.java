@@ -64,55 +64,7 @@ public class DB_Patient {
 
     }
 
-    public static Patient getPatientById(int patient_id) {
-        Patient patient = null;
-        String sql;
-
-        sql = "SELECT * FROM " + PATIENT_VIEW + " ";
-        sql += "WHERE patient_id = " + patient_id;
-
-        List<HashMap<String, Object>> lsPatients = SQLManager.query(sql);
-
-        if (lsPatients.size() >= 1) {
-            HashMap<String, Object> patient_map = lsPatients.get(0);
-            patient = deserializePatientHashMap(patient_map);
-        }
-
-        return patient;
-    }
-
-    public static Patient getPatientByUserId(int user_id) {
-        Patient patient = null;
-        String sql;
-
-        sql = "SELECT * FROM " + PATIENT_VIEW + " ";
-        sql += "WHERE user_id = " + user_id;
-
-        List<HashMap<String, Object>> lsPatients = SQLManager.query(sql);
-
-        if (lsPatients.size() >= 1) {
-            HashMap<String, Object> patient_map = lsPatients.get(0);
-            patient = deserializePatientHashMap(patient_map);
-        }
-
-        return patient;
-    }
-
-    public static List<Patient> getAllPatients() {
-        List<Patient> patients = new ArrayList<Patient>();
-        String sql;
-
-        sql = "SELECT * FROM " + PATIENT_VIEW;
-
-        List<HashMap<String, Object>> lsPatients = SQLManager.query(sql);
-
-        for (HashMap<String, Object> patient_map : lsPatients) {
-            patients.add(deserializePatientHashMap(patient_map));
-        }
-
-        return patients;
-    }
-
+    //DELETE Patient
     public static boolean deletePatient(Patient patient) {
 
         String sql;
@@ -125,6 +77,68 @@ public class DB_Patient {
 
         return (patient_success && user_success);
 
+    }
+
+    // GET Patient Methods
+    public static Patient getPatientById(int patient_id) {
+        String sql;
+
+        sql = "SELECT * FROM " + PATIENT_VIEW + " ";
+        sql += "WHERE patient_id = " + patient_id;
+
+        return getPatient(sql);
+    }
+
+    public static Patient getPatientByUserId(int user_id) {
+        String sql;
+
+        sql = "SELECT * FROM " + PATIENT_VIEW + " ";
+        sql += "WHERE user_id = " + user_id;
+
+        return getPatient(sql);
+    }
+
+    public static Patient getPatientByHealthCard(String health_card) {
+        String sql;
+
+        sql = "SELECT * FROM " + PATIENT_VIEW + " ";
+        sql += "WHERE health_card = '" + health_card + "'";
+
+        return getPatient(sql);
+    }
+
+    public static List<Patient> getAllPatients() {
+        String sql;
+
+        sql = "SELECT * FROM " + PATIENT_VIEW;
+
+        return getPatientsList(sql);
+    }
+
+    //Helper functions
+    private static List<Patient> getPatientsList(String sql) {
+        List<Patient> patients = new ArrayList<Patient>();
+
+        List<HashMap<String, Object>> lsPatients = SQLManager.query(sql);
+
+        for (HashMap<String, Object> patient_map : lsPatients) {
+            patients.add(deserializePatientHashMap(patient_map));
+        }
+
+        return patients;
+    }
+
+    private static Patient getPatient(String sql) {
+        Patient patient = null;
+
+        List<HashMap<String, Object>> lsPatients = SQLManager.query(sql);
+
+        if (lsPatients.size() >= 1) {
+            HashMap<String, Object> patient_map = lsPatients.get(0);
+            patient = deserializePatientHashMap(patient_map);
+        }
+
+        return patient;
     }
 
     private static Patient deserializePatientHashMap(HashMap<String, Object> patient_map) {

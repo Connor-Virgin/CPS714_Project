@@ -44,7 +44,7 @@ public class DB_Appointment {
 
         boolean app_success = SQLManager.execute(sql);
 
-        return app_success ? getAppointmentByDateTimeDoctor(app.getDoctorId(),app.getAppointmentStart()) : null; // TODO Need a way to return new appointments as object with new id
+        return app_success ? getAppointmentByDateTimeDoctor(app.getDoctorId(),app.getAppointmentStart()) : null;
     }
 
     //DELETE Appointment

@@ -133,4 +133,25 @@ public class SQLManager {
         }
     }
 
+    public static String CalToSQLDateTime(Calendar cal) {
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
+        return sdf.format(cal.getTime());
+    }
+
+    public static Calendar SQLDateTimeToCal(String dateTimeString) {
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
+        Date date;
+        Calendar cal = null;
+        try {
+            date = (Date)sdf.parse(dateTimeString);
+            cal = Calendar.getInstance();
+            cal.setTime(date);
+        } catch (ParseException e) {
+            System.out.println("Exception :"+e);
+            e.printStackTrace();
+        }
+        
+        return cal;
+    }
+
 }

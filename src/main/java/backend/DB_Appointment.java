@@ -24,7 +24,7 @@ public class DB_Appointment {
             sql += "doctor_id";
             sql += ")";
             sql += "VALUES (";
-            sql += "'" + Appointment.CalToSQLDateTime(app.getAppointmentStart()) + "', ";
+            sql += "'" + SQLManager.CalToSQLDateTime(app.getAppointmentStart()) + "', ";
             sql += app.getAppointmentDuration() + ", ";
             sql += "'" + app.getPatientId() + "', ";
             sql += "'" + app.getDoctorId()+ "'";
@@ -34,7 +34,7 @@ public class DB_Appointment {
         // UPDATE Appointment
         else {
             sql = "UPDATE" + APPOINTMENT_TABLE + " SET ";
-            sql += "appointment_datetime = '" + Appointment.CalToSQLDateTime(app.getAppointmentStart()) + "', ";
+            sql += "appointment_datetime = '" + SQLManager.CalToSQLDateTime(app.getAppointmentStart()) + "', ";
             sql += "appointment_duration = " + app.getAppointmentDuration() + ", ";
             sql += "patient_id = " + app.getPatientId() + ", ";
             sql += "doctor_id = " + app.getDoctorId() + " ";
@@ -66,7 +66,7 @@ public class DB_Appointment {
         String sql;
 
         sql = "SELECT * FROM " + APPOINTMENT_TABLE + " ";
-        sql += "WHERE doctor_id = " + doctor_id + " AND appointment_datetime = '" + Appointment.CalToSQLDateTime(appointment_datetime) + "'";
+        sql += "WHERE doctor_id = " + doctor_id + " AND appointment_datetime = '" + SQLManager.CalToSQLDateTime(appointment_datetime) + "'";
 
         return getAppointment(sql);
     }
@@ -75,7 +75,7 @@ public class DB_Appointment {
         String sql;
 
         sql = "SELECT * FROM " + APPOINTMENT_TABLE + " ";
-        sql += "WHERE doctor_id = " + doctor_id + " AND appointment_datetime >= '" + Appointment.CalToSQLDateTime(Calendar.getInstance()) + "'";
+        sql += "WHERE doctor_id = " + doctor_id + " AND appointment_datetime >= '" + SQLManager.CalToSQLDateTime(Calendar.getInstance()) + "'";
 
         return getAppointmentsList(sql);
     }
@@ -84,7 +84,7 @@ public class DB_Appointment {
         String sql;
 
         sql = "SELECT * FROM " + APPOINTMENT_TABLE + " ";
-        sql += "WHERE patient_id = " + patient_id + " AND appointment_datetime >= '" + Appointment.CalToSQLDateTime(Calendar.getInstance()) + "'";
+        sql += "WHERE patient_id = " + patient_id + " AND appointment_datetime >= '" + SQLManager.CalToSQLDateTime(Calendar.getInstance()) + "'";
 
         return getAppointmentsList(sql);
     }
@@ -118,7 +118,7 @@ public class DB_Appointment {
     private static Appointment deserializeAppointmentHashMap(HashMap<String, Object> app_map) {
 
         int appointment_id = (int) app_map.get("appointment_id");
-        Calendar appointment_datetime = Appointment.SQLDateTimeToCal(app_map.get("appointment_datetime").toString());
+        Calendar appointment_datetime = SQLManager.SQLDateTimeToCal(app_map.get("appointment_datetime").toString());
         int appointment_duration = (int) app_map.get("appointment_duration");
         int doctor_id = (int) app_map.get("doctor_id");
         int patient_id = (int) app_map.get("patient_id");

@@ -1,7 +1,6 @@
 package backend;
 
 import java.sql.*;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,9 +12,9 @@ public class SQLManagerTest {
 
         // NEW
         System.out.println("-----------\nNEW RECORD\n----------");
-        Patient tester = new Patient(0, 0, "TESTER", "TEST", "PATIENT", "123456789AA", "test@hospitalerp.com",
+        Patient tester = new Patient("TESTER", "TEST", "PATIENT", "123456789AA", "test@hospitalerp.com",
                 "245 Church Street",
-                "+1(416)123-4567", new GregorianCalendar(1990, 1, 1), "MALE", 190,
+                "+1(416)123-4567", SQLManager.SQLDateTimeToCal("1990-01-01 00:00:00"), "MALE", 190,
                 175, 3, 2, "pass");
 
         tester = DB_Patient.createUpdatePatient(tester);

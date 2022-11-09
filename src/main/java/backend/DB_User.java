@@ -98,11 +98,11 @@ public class DB_User {
         return getUser(sql);
     }
 
-    public static User getUserLogin(String user_name, String password) {
+    public static User getUserLogin(String login, String password) {
         String sql;
 
         sql = "SELECT * FROM " + USER_TABLE + " ";
-        sql += "WHERE login = '" + user_name + "' AND password = '" + password + "'";
+        sql += "WHERE (login = '" + login + "' OR email = '" + login + "') AND password = '" + password + "'";
 
         return getUser(sql);
     }

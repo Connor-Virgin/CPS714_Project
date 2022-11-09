@@ -16,7 +16,7 @@ public class LoginService {
     //Calls to DB_User to confirm validity of login information
     public boolean doesExsist(Login login){
         try{
-            User userInfo = DB_User.getUser(login.getEmail(), login.getPassword());
+            User userInfo = DB_User.getUserLogin(login.getEmail(), login.getPassword());
             if(userInfo == null){
                 return false;
             }

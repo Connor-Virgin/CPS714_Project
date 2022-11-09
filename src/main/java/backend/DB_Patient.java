@@ -49,7 +49,7 @@ public class DB_Patient {
                 sql += "birthdate = '" + new java.sql.Date(patient.getBirthdate().getTimeInMillis()) + "', ";
                 sql += "gender = '" + patient.getGender() + "', ";
                 sql += "height_cm = " + patient.getHeight() + ", ";
-                sql += "weight_lbs = " + patient.getWeight();
+                sql += "weight_lbs = " + patient.getWeight() + " ";
                 sql += "WHERE patient_id = " + patient.getPatientId();
 
             }

@@ -1,14 +1,16 @@
 package objects;
 
-import java.util.Calendar;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Appointment {
     // Instance Variables
     int appointment_id;
     Calendar appointment_datetime;
     int appointment_duration_min;
-    String doctor_id;
-    String patient_id;
+    int doctor_id;
+    int patient_id;
 
     // Setter Classes
     public void setAppointmentDateTime(Calendar appointment_datetime) {
@@ -19,11 +21,11 @@ public class Appointment {
         this.appointment_duration_min = appointment_duration_min;
     }
 
-    public void setDoctorId(String doctor_id) {
+    public void setDoctorId(int doctor_id) {
         this.doctor_id = doctor_id;
     }
 
-    public void setPatientId(String patient_id) {
+    public void setPatientId(int patient_id) {
         this.patient_id = patient_id;
     }
 
@@ -46,18 +48,18 @@ public class Appointment {
         return appointment_end;
     }
 
-    public String getDoctorId() {
+    public int getDoctorId() {
         return doctor_id;
     }
 
-    public String getPatientId() {
+    public int getPatientId() {
         return patient_id;
     }
 
     // Constructor
     // For READ, UPDATE, DELETE existing appointment
     public Appointment(int appointment_id, Calendar appointment_datetime, int appointment_duration_min,
-            String doctor_id, String patient_id) {
+            int doctor_id, int patient_id) {
         this.appointment_id = appointment_id;
         this.appointment_datetime = appointment_datetime;
         this.appointment_duration_min = appointment_duration_min;
@@ -67,7 +69,7 @@ public class Appointment {
 
     // For INSERT new appointment
     public Appointment(Calendar appointment_datetime, int appointment_duration_min,
-            String doctor_id, String patient_id) {
+            int doctor_id, int patient_id) {
         this(0, appointment_datetime, appointment_duration_min, doctor_id, patient_id);
     }
 
@@ -80,6 +82,27 @@ public class Appointment {
          * this.dateTime = "2022-10-06T11:30";
          * this.duration = "1";
          */
+    }
+
+    public static String CalToSQLDateTime(Calendar cal) {
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
+        return sdf.format(cal.getTime());
+    }
+
+    public static Calendar SQLDateTimeToCal(String dateTimeString) {
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
+        Date date;
+        Calendar cal = null;
+        try {
+            date = (Date)sdf.parse(dateTimeString);
+            cal = Calendar.getInstance();
+            cal.setTime(date);
+        } catch (ParseException e) {
+            System.out.println("Exception :"+e);
+            e.printStackTrace();
+        }
+        
+        return cal;
     }
 
 }

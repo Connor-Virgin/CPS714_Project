@@ -71,6 +71,11 @@ public class DB_Appointment {
         return getAppointment(sql);
     }
 
+    public static Appointment getAppointmentsByDateAndDoctor(int doctor_id, Calendar appointment_date) {
+        //TODO Get all available 30 minute timeslots in a day for a doctor
+        return new Appointment();
+    }
+
     public static List<Appointment> getAppointmentsByDoctorId(int doctor_id) {
         String sql;
 

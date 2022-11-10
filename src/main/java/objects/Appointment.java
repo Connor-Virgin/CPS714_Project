@@ -4,11 +4,11 @@ import java.util.*;
 
 public class Appointment {
     // Instance Variables
-    int appointment_id;
-    Calendar appointment_datetime;
-    int appointment_duration_min;
-    int doctor_id;
-    int patient_id;
+    private int appointment_id;
+    private Calendar appointment_datetime;
+    private int appointment_duration_min;
+    private int doctor_id;
+    private int patient_id;
 
     // Setter Classes
     public void setAppointmentDateTime(Calendar appointment_datetime) {

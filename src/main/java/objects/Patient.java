@@ -4,12 +4,12 @@ import java.util.Calendar;
 
 public class Patient extends User {
     // determine what attributes should be unique to patients
-    int patient_id;
-    String health_card;
-    Calendar birthdate;
-    String gender;
-    int height_cm;
-    int weight_lbs;
+    private int patient_id;
+    private String health_card;
+    private Calendar birthdate;
+    private String gender;
+    private int height_cm;
+    private int weight_lbs;
 
     // Setter Classes
     public void setHealthCard(String healthCard) {

@@ -6,16 +6,16 @@ import references.Status;
 public class User {
 
     // Instance Variables
-    int user_id;
-    String user_name;
-    String first_name;
-    String last_name;
-    String email;
-    String address;
-    String telephone;
-    int role;
-    int status;
-    String password;
+    private int user_id;
+    private String user_name;
+    private String first_name;
+    private String last_name;
+    private String email;
+    private String address;
+    private String telephone;
+    private int role;
+    private int status;
+    private String password;
 
     // Setter Classes
     public void setUserName(String user_name) {

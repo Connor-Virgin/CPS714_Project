@@ -56,19 +56,19 @@ public class Appointment {
 
     // Constructor
     // For READ, UPDATE, DELETE existing appointment
-    public Appointment(int appointment_id, Calendar appointment_datetime, int appointment_duration_min,
+    public Appointment(int appointment_id, Calendar appointment_datetime,
             int doctor_id, int patient_id) {
         this.appointment_id = appointment_id;
         this.appointment_datetime = appointment_datetime;
-        this.appointment_duration_min = appointment_duration_min;
+        this.appointment_duration_min = 30;
         this.doctor_id = doctor_id;
         this.patient_id = patient_id;
     }
 
     // For INSERT new appointment
-    public Appointment(Calendar appointment_datetime, int appointment_duration_min,
+    public Appointment(Calendar appointment_datetime,
             int doctor_id, int patient_id) {
-        this(0, appointment_datetime, appointment_duration_min, doctor_id, patient_id);
+        this(0, appointment_datetime, doctor_id, patient_id);
     }
 
     // Default Constructor

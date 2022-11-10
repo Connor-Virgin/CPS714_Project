@@ -119,11 +119,10 @@ public class DB_Appointment {
 
         int appointment_id = (int) app_map.get("appointment_id");
         Calendar appointment_datetime = SQLManager.SQLDateTimeToCal(app_map.get("appointment_datetime").toString());
-        int appointment_duration = (int) app_map.get("appointment_duration");
+        //int appointment_duration = (int) app_map.get("appointment_duration");
         int doctor_id = (int) app_map.get("doctor_id");
         int patient_id = (int) app_map.get("patient_id");
 
-        return new Appointment(appointment_id, appointment_datetime, appointment_duration,
-        doctor_id, patient_id);
+        return new Appointment(appointment_id, appointment_datetime, doctor_id, patient_id);
     }
 }

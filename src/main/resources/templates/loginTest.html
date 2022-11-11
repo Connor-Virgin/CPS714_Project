@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"> 
+    <head>
+        <link rel="stylesheet" th:href= "@{/css/style.css}"/>
+    </head>    
+    <h1>
+        Login Test Page
+    </h1>
+    <p>
+        Http Session User ID: <span th:text="${sessionUserID}">user_id</span>
+    </p>
+    <p>
+        User Email: <span th:text="${sessionUser.email}">email</span>
+    </p>
+    <p>
+        User ID: <span th:text="${sessionUser.user_id}">user_id</span>
+    </p>
+    <p>
+        Firstname: <span th:text="${sessionUser.firstname}">firstname</span>
+    </p>
+    <p>
+        Lastname: <span th:text="${sessionUser.lastname}">lastname</span>
+    </p>
+    <p th:switch="${sessionUser.role}">
+        Role: <span th:case="'1'">Admin</span>
+              <span th:case="'2'">Doctor</span>
+              <span th:case="'3'">Patient</span>
+              <span th:case="'4'">Nurse</span>
+              <span th:case="*">?</span>
+    </p>
+</body>
+</html>

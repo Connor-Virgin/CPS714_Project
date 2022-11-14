@@ -37,3 +37,4 @@ target/classes/backend/DB_Appointment.class
 target/classes/backend/DB_Patient.class
 target/classes/backend/SQLManager.class
 target/classes/backend/SQLManagerTest.class
+target/classes/

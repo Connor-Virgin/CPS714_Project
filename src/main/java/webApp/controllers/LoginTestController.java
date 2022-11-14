@@ -3,17 +3,16 @@ package webApp.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import webApp.models.Login;
+import webApp.models.SessionUser;
 
 @Controller
-public class HomeController {
+public class LoginTestController {
 
      //Deals with the HTML get request '/home'
-     @GetMapping("/home")
-     public String home(Model model, Login login) {
+     @GetMapping("/loginTest")
+     public String home(Model model, SessionUser sessionUser) {
          //Thymeleaf looks for home.html in resources/templates/
-         return "home";
+         return "loginTest";
      }
 }

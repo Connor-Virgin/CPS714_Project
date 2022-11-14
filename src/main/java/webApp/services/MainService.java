@@ -10,6 +10,7 @@ import objects.User;
 import objects.Appointment;
 import references.Role;
 import references.Status;
+import webApp.models.App;
 
 /*
  * Business layer to be used by MainController
@@ -18,6 +19,20 @@ import references.Status;
 
 @Service
 public class MainService {
+
+    // Display available appointments by date and doctor
+
+    public boolean checkAvailableAppointments (App app) {
+        try {
+            List<Appointment> appointments = DB_Appointment.getAvailableAppointments(app.getDoctorId(), app.getPatientId(), app.getDateTime());
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+
     public boolean createAppointment(Appointment app) {
         try {
             Appointment a = DB_Appointment.createUpdateUser(app);
@@ -31,41 +46,5 @@ public class MainService {
             return false;
         }
     }
-
-    // Display available appointments by date and doctor
-
-    // profile page:
-
-    public boolean displayAppointmentByDateTimeDoctor(Appointment app) {
-        try {
-            Appointment a = DB_Appointment.getAppointmentByDateTimeDoctor(app.getDoctorId(), app.getAppointmentStart());
-            if (a == null) {
-                return false;
-            }
-            return true;
-        }
-        catch (Exception e) {
-            System.out.println(e);
-            return false;
-        }
-    }
-
-    public boolean displayAppointments(Appointment app) {
-        try {
-            List<Appointment> list = DB_Appointment.getAppointmentsByPatientId(app.getPatientId());
-            if (list == null) {
-                return false;
-            }
-            return true;
-        }
-        catch (Exception e) {
-            System.out.println(e);
-            return false;
-        }
-    }
-
-
-
-
     
 }

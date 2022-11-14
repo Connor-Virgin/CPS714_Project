@@ -14,7 +14,6 @@ public class Reg {
     private String address;
     private String telephone;
     private String role;
-    private String healthcardnumber;
 
     public String getAddress() {
         return this.address;
@@ -56,14 +55,6 @@ public class Reg {
         this.lastname = lastname;
     }
 
-    public String getHealthcardnumber() {
-        return this.healthcardnumber;
-    }
-
-    public void setHealthcardnumber(String healthcardnumber) {
-        this.healthcardnumber = healthcardnumber;
-    }
-
     public String getEmail() {
         return this.email;
     }
@@ -81,7 +72,7 @@ public class Reg {
     }
 
     public Reg(String firstname, String lastname, String email, String address, String telephone,
-    String role, String password, String healthcardnumber){
+    String role, String password){
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -89,8 +80,10 @@ public class Reg {
         this.telephone = telephone;
         this.role = role;
         this.password = password;
-        this.healthcardnumber = healthcardnumber;
-      
+    }
+
+    public Reg(){
+        
     }
 
     @Override

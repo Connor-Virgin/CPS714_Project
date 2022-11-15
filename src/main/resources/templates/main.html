@@ -121,7 +121,7 @@
                 tab.id = i; 
                 //tab.classList.add('tablinks');
                 tab.setAttribute("class", "tablinks");
-                tab.setAttribute("onclick", "openCity(event, 'user-selection')");
+                tab.setAttribute("onclick", "openAppointement(event, 'user-selection')");
                 //id="defaultOpen"
                 //.style.display = "none";
                 tab.setAttribute("id", "defaultOpen");
@@ -138,7 +138,7 @@
             }
             }
 
-            function openCity(evt, cityName) {
+            function openAppointement(evt, user_selection) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
@@ -148,7 +148,7 @@
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            document.getElementById(cityName).style.display = "block";
+            document.getElementById(user_selection).style.display = "block";
             evt.currentTarget.className += " active";
             }
 

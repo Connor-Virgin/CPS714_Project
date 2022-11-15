@@ -63,7 +63,6 @@ public class DB_Appointment {
 
     // GET Appointment Methods
     public static List<Appointment> getAvailableAppointments(int doctor_id, int patient_id, Calendar appointment_date) {
-        //TODO Get all available 30 minute timeslots in a day for a doctor
         List<Appointment> available = new ArrayList<Appointment>();
         List<Appointment> existing_doctor = getAppointmentsByDoctorId(doctor_id);
         List<Appointment> existing_patient = getAppointmentsByPatientId(patient_id);

@@ -65,18 +65,13 @@
     
 
     <p>
-        Welcome Dhruv please select an appointment date below! 
+        Welcome Admin, you can edit and delete appointments below! As well as you can manage inventory below! 
     </p>
 
     <div class="dropdown">
         <label>Calendar: </label>
         <input id="myDate" type="date" name="date" size="30" >
-        <select th:field="*{role}" type="role" name = "Choose one">
-          <option value = "" selected>Dr.Dhawan</option>
-          <option value = "">Dr.Ceamorebuts</option>
-          <option value = "">Dr.Ajay</option>
-       </select> 
-        <button onclick="myFunction()">Click here to check the selected dates avaliable time!</button>
+        <button onclick="myFunction()">Click here to edit/delete appointments within the selected date</button>
 
         <div id="appointment" style="color:black;" >
             <h2 id="dayofweek">
@@ -90,17 +85,27 @@
           <div class="tab" id="tab">
         </div>
 
-        <div id="user-selection" class="tabcontent" style="display: none;">
+        <div id="admin-selection" class="tabcontent" style="display: none;">
             <h3>9:30 am - 10 am</h3>
-            <p>avaliable</p>
+            <p>
+              <form th:action="@{/}" th:method="get">
+                  <p>
+                      Edit this appointment
+                      <a href="edit_appointment.html">
+                          <button>Edit Appointment</button>
+                      </a>
+                  </p>
+              </form>
+          </p>
           </div>
+    
           
-          <div id="user-selection2" class="tabcontent" style="display: none;">
+          <div id="admin-selection2" class="tabcontent" style="display: none;">
             <h3></h3>
             <p></p> 
           </div>
           
-          <div id="user-selection3" class="tabcontent" style="display: none;">
+          <div id="admin-selection3" class="tabcontent" style="display: none;">
             <h3></h3>
             <p></p>
           </div>
@@ -115,13 +120,13 @@
             var Text;
             var tab; 
             var numberoftimeslots = 4;
-            for(var i = 0; i < 16; i++)
+            for(var i = 0; i < numberoftimeslots; i++)
             {
                 tab = document.createElement("button"); // Create a button element
                 tab.id = i; 
                 //tab.classList.add('tablinks');
                 tab.setAttribute("class", "tablinks");
-                tab.setAttribute("onclick", "openAppointement(event, 'user-selection')");
+                tab.setAttribute("onclick", "openAppointement(event, 'admin-selection')");
                 //id="defaultOpen"
                 //.style.display = "none";
                 tab.setAttribute("id", "defaultOpen");
@@ -138,7 +143,7 @@
             }
             }
 
-            function openAppointement(evt, user_selection) {
+            function openAppointement(evt, admin_selection) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
@@ -148,7 +153,7 @@
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            document.getElementById(user_selection).style.display = "block";
+            document.getElementById(admin_selection).style.display = "block";
             evt.currentTarget.className += " active";
             }
 
@@ -159,12 +164,13 @@
                 document.getElementById("successmsg").appendChild(Text);
 
             }
-            
+            function rPage(){
+                //ADD CODE TO UPDATE THE DATABASE TO DELETE THE ENTRY BEFORE WE RELOAD THE PAGE
+                window.location.reload();
+            }
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
         </script>
-
-        
         
     </div>
 </body>

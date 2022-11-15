@@ -68,7 +68,6 @@ public class DB_Appointment {
         List<Appointment> existing_doctor = getAppointmentsByDoctorId(doctor_id);
         List<Appointment> existing_patient = getAppointmentsByPatientId(patient_id);
 
-        
         for (Appointment app : buildDailyAppointmentsList(doctor_id, patient_id, appointment_date)) {
             boolean patient_is_free = !validateAppointment(app, existing_patient);
             boolean doctor_is_free = !validateAppointment(app, existing_doctor);
@@ -98,15 +97,6 @@ public class DB_Appointment {
     }
 
     // Helpers
-    private static Appointment getAppointmentByDateTimeDoctor(int doctor_id, Calendar appointment_datetime) {
-        String sql;
-
-        sql = "SELECT * FROM " + APPOINTMENT_TABLE + " ";
-        sql += "WHERE doctor_id = " + doctor_id + " AND appointment_datetime = '" + SQLManager.CalToSQLDateTime(appointment_datetime) + "'";
-
-        return getAppointment(sql);
-    }
-    
     private static Appointment[] buildDailyAppointmentsList(int doctor_id, int patient_id, Calendar appointment_date) {
         Appointment[] apps_list = new Appointment[16];
 
@@ -130,6 +120,15 @@ public class DB_Appointment {
         }
 
         return conflict;
+    }
+
+    private static Appointment getAppointmentByDateTimeDoctor(int doctor_id, Calendar appointment_datetime) {
+        String sql;
+
+        sql = "SELECT * FROM " + APPOINTMENT_TABLE + " ";
+        sql += "WHERE doctor_id = " + doctor_id + " AND appointment_datetime = '" + SQLManager.CalToSQLDateTime(appointment_datetime) + "'";
+
+        return getAppointment(sql);
     }
 
     private static List<Appointment> getAppointmentsList(String sql) {

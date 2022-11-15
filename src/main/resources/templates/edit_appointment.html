@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">    
+
+<head>
+    <link rel="stylesheet" th:href= "@{/css/style.css}"/>
+</head> 
+
+    <h1 style="color:White;font-family:verdana;font-size:36px;text-align: center;background-color:#7289da">
+
+        Edit Appointment
+
+    </h1>
+    <center>
+        <img th:src="@{/img/H.png}" style= "width:150px;height:150px;" alt= "Hospital Logo">
+    </center>
+
+    <form th:object="${reg}" th:action="@{/regsubmit}" th:method="post">
+        <table border="2" align="center" cellpadding="5" cellspacing="5">
+            <tr>
+                <td> Patient Name:</td>
+                <td> <input th:field="*{}" type="" name="" size="30"> </td>
+            </tr>
+
+            <tr>
+                <td> Doctor:</td>
+                <td>
+                    <select th:field="" type="role" name = "Choose one">
+                        <option value = "" selected>Dr.Dhawan</option>
+                        <option value = "">Dr.Ceamorebuts</option>
+                        <option value = "">Dr.Ajay</option>
+                    </select> 
+                </td>
+            </tr>
+
+            <tr>
+                <td> Appointment Date:</td>
+                <td> <input id="newDate" type="date" name="date" size="30" > </td>
+            </tr>
+
+            <tr>
+                <td> Appointment Time:</td>
+                <td> <input id="newTime" type="time" name="date" size="30" > </td>
+            </tr>
+
+        </table>
+        <p>
+            <form th:action="@{/}" th:method="get">
+                <p>
+                    Submit Changes and go edit appointment page
+                    <a href="edit_inventory.html">
+                        <button>Submit Appointment Changes</button>
+                    </a>
+                </p>
+            </form>
+        </p>
+    </form>
+</body>
+</html>
+

@@ -4,7 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 import webApp.models.Login;
+import webApp.models.SessionUser;
 import webApp.services.LoginService;
 
 /*
@@ -12,6 +15,7 @@ import webApp.services.LoginService;
  */
 
 @Controller
+@SessionAttributes({"sessionUserID"})
 public class LoginController {
 
     //Instance Variables
@@ -26,24 +30,33 @@ public class LoginController {
     @GetMapping("/login")
 	public String login(Model model, Login login) {
         //Thymeleaf looks for login.html in resources/templates/
+        model.addAttribute("sessionUserID", 0);
         return "login";
     }
     
     //Deals with the HTML post request mapped to '/submit'
     @PostMapping("/submit")
     public String loginSubmit(Model model, Login login){
-
         System.out.println(login.toString());
+        
+        try{
+            SessionUser sessionUser = loginservice.loginUser(login);
+            if (sessionUser == null){
+                //Pass a string called errorMessage to be dispayed on login.html
+                model.addAttribute("errorMessage", "Login Failed: Your user ID or password is incorrect");
+                //Refreshes login.html
+                return "login";
+            }
+            else{
+                model.addAttribute("sessionUser", sessionUser);
+                model.addAttribute("sessionUserID", sessionUser.getUser_id());
+                return "loginTest";
+            }
 
-        //if login info deemed valid in the LoginService
-        if(loginservice.doesExsist(login)){
-            //Pass this.login to home.html
-            model.addAttribute("login", login);
-            return "home";
         }
-        else{
+        catch(Exception e){
             //Pass a string called errorMessage to be dispayed on login.html
-            model.addAttribute("errorMessage", "Login Failed: Your user ID or password is incorrect");
+            model.addAttribute("errorMessage", "Error on Login");
             //Refreshes login.html
             return "login";
         }

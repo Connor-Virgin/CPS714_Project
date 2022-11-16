@@ -10,7 +10,7 @@ import objects.User;
 import objects.Appointment;
 import references.Role;
 import references.Status;
-import webApp.models.App;
+import webApp.models.Appt;
 
 /*
  * Business layer to be used by MainController
@@ -22,7 +22,7 @@ public class MainService {
 
     // Display available appointments by date and doctor
 
-    public boolean checkAvailableAppointments (App app) {
+    public boolean checkAvailableAppointments (Appt app) {
         try {
             List<Appointment> appointments = DB_Appointment.getAvailableAppointments(app.getDoctorId(), app.getPatientId(), app.getDateTime());
             return true;

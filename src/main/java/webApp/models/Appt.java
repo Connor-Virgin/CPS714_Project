@@ -1,8 +1,7 @@
 package webApp.models;
-
 import java.util.Calendar;
 
-public class App {
+public class Appt {
     private Calendar app_datetime;
     private int app_ID;
     private int doctor_id;
@@ -39,14 +38,15 @@ public class App {
         this.patient_id = patient_id;
     }
 
-    public App (Calendar app_datetime, int doctor_id, int patient_id) {
+    public Appt(Calendar app_datetime, int doctor_id, int patient_id) {
         this.app_datetime = app_datetime;
         this.app_ID = app_ID;
         this.patient_id = patient_id;
     }
 
-    public App (Calendar app_datetime, int app_ID) {
+    public Appt(Calendar app_datetime, int app_ID) {
         this.app_datetime = app_datetime;
         this.app_ID = app_ID;
     }
+    
 }

@@ -22,14 +22,14 @@ public class MainService {
 
     // Display available appointments by date and doctor
 
-    public boolean checkAvailableAppointments (Appt app) {
+    public List<Appointment> checkAvailableAppointments (Appt app) {
         try {
             List<Appointment> appointments = DB_Appointment.getAvailableAppointments(app.getDoctorId(), app.getPatientId(), app.getDateTime());
-            return true;
+            return appointments;
         }
         catch (Exception e) {
             System.out.println(e);
-            return false;
+            return null;
         }
     }
 

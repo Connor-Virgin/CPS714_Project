@@ -6,17 +6,17 @@ import java.util.*;
 
 public class ProfileService {
 
-    public boolean displayAppointments(Appt app) {
+    public List<Appointment> displayAppointments(Appt app) {
         try {
             List<Appointment> list = DB_Appointment.getAppointmentsByPatientId(app.getPatientId());
             if (list == null) {
-                return false;
+                return null;
             }
-            return true;
+            return list;
         }
         catch (Exception e) {
             System.out.println(e);
-            return false;
+            return null;
         }
     }
 }

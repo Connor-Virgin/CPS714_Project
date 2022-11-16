@@ -3,7 +3,6 @@ import java.util.Calendar;
 
 public class Appt {
     private Calendar app_datetime;
-    private int app_ID;
     private int doctor_id;
     private int patient_id;
 
@@ -12,14 +11,6 @@ public class Appt {
     }
     public void setAppDateTime(Calendar app_datetime) {
         this.app_datetime = app_datetime;
-    }
-
-    public int getAppointmentID() {
-        return app_ID;
-    }
-    
-    public void setAppID(int app_ID) {
-        this.app_ID = app_ID;
     }
 
     public int getDoctorId() {
@@ -40,13 +31,8 @@ public class Appt {
 
     public Appt(Calendar app_datetime, int doctor_id, int patient_id) {
         this.app_datetime = app_datetime;
-        this.app_ID = app_ID;
+        this.doctor_id = doctor_id;
         this.patient_id = patient_id;
-    }
-
-    public Appt(Calendar app_datetime, int app_ID) {
-        this.app_datetime = app_datetime;
-        this.app_ID = app_ID;
     }
     
 }

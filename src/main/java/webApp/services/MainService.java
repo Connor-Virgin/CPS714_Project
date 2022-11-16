@@ -2,14 +2,8 @@ package webApp.services;
 
 import org.springframework.stereotype.Service;
 import java.util.*;
-import backend.DB_User;
 import backend.DB_Appointment;
-import backend.DB_Doctor;
-import backend.DB_Patient;
-import objects.User;
 import objects.Appointment;
-import references.Role;
-import references.Status;
 import webApp.models.Appt;
 
 /*

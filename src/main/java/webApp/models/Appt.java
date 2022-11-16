@@ -34,5 +34,10 @@ public class Appt {
         this.doctor_id = doctor_id;
         this.patient_id = patient_id;
     }
+
+    @Override
+    public String toString() {
+        return "Appointment [date=" + app_datetime + ", patient_id=" + patient_id + "doctor_id = " + doctor_id + "]";
+    }
     
 }

@@ -7,36 +7,37 @@
 </head>   
 <body>
     <h1>
-        Welcome Back, Dhruv!
+        Welcome Back, <span th:text="${sessionUser.firstname}">firstname</span> !
     </h1>
     <center>
         <img th:src="@{/img/H.png}" style= "width:150px;height:150px;" alt= "Hospital Logo">
     </center>
 
-    <form th:object="${register}" th:action="@{/submit}" th:method="post">
         <table border="2" align="center" cellpadding="5" cellspacing="5">
             <tr>
                 <td> Account Type:</td>
-                <td> Patient </td>
+                <td> <p th:switch="${sessionUser.role}">
+                        <span th:case="'1'">Admin</span>
+                        <span th:case="'2'">Doctor</span>
+                        <span th:case="'3'">Patient</span>
+                        <span th:case="'4'">Nurse</span>
+                        <span th:case="*">?</span>
+              </p> </td>
             </tr>
             <tr>
                 <td> First Name:</td>
-                <td> Dhruv </td>
+                <td> <span th:text="${sessionUser.firstname}">firstname</span> </td>
             </tr>
             <tr>
                 <td>Last Name:</td>
-                <td> Sharma </td>
-            </tr>
-            <tr>
-                <td> Healthcard Number:</td>
-                <td> 123456789 </td>
+                <td> <span th:text="${sessionUser.lastname}">lastname</span> </td>
             </tr>
             <tr>
                 <td> Email Address:</td>
-                <td> dhruv1.sharma@instagram.com </td>
+                <td> <span th:text="${sessionUser.email}">email</span> </td>
             </tr>
         </table>
-    </form>
+   
 
     <style>
         * {box-sizing: border-box}

@@ -86,6 +86,15 @@
       <button type="submit" onclick="myFunction()">Click here to check Avaliability!</button>
     </form>
 
+    <form th:action="@{/profile}" th:method="get">
+      <p>
+          Want to see your appointments? 
+          <a href="registration.html">
+              <button type="submit">Click here to go to profile page!</button>
+          </a>
+      </p>
+    </form>
+
         <div id="appointment" style="color:black;" >
             <h2 id="dayofweek">
                 Please Select a Date!

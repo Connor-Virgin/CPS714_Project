@@ -2,19 +2,15 @@ package webApp.services;
 import webApp.models.Appt;
 import backend.DB_Appointment;
 import objects.Appointment;
-import webApp.models.Login;
 import webApp.models.SessionUser;
-import webApp.services.LoginService;
 import java.util.*;
 
 public class ProfileService {
 
-    public String[] displayUserInfo (LoginService user , Login login) {
+    // This will retrieve the user's info to  display on the profile page
+
+    public String[] displayUserInfo (SessionUser sessionUser) {
         try {
-            SessionUser sessionUser = user.loginUser(login);
-            if (sessionUser == null) {
-                return null;
-            }
             String role = getUserRole(sessionUser);           
             String[] userInfo = {role, sessionUser.getFirstname(), sessionUser.getLastname(), sessionUser.getEmail()};
             return userInfo;
@@ -24,6 +20,8 @@ public class ProfileService {
             return null;
         }
     }
+
+    // This will get all the users current appointments
 
     public List<Appointment> displayAppointments(Appt app) {
         try {
@@ -38,6 +36,8 @@ public class ProfileService {
             return null;
         }
     }
+
+    // Helper function
 
     public String getUserRole (SessionUser sessionUser) {
         switch (sessionUser.getRole()) {

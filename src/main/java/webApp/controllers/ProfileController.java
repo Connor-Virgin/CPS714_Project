@@ -24,6 +24,8 @@ public class ProfileController {
      @GetMapping("/profile")
      public String profile(Model model, SessionUser sessionUser,  Appt appt) {
          //Thymeleaf looks for profile.html in resources/templates/
+         
+         System.out.println(sessionUser);
          return "profile";
      }
 }

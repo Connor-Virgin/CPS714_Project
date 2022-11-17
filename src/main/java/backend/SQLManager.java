@@ -134,16 +134,16 @@ public class SQLManager {
     }
 
     public static String CalToSQLDateTime(Calendar cal) {
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(cal.getTime());
     }
 
     public static Calendar SQLDateTimeToCal(String dateTimeString) {
-        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.0");
         Date date;
         Calendar cal = null;
         try {
-            date = (Date)sdf.parse(dateTimeString);
+            date = sdf.parse(dateTimeString);
             cal = Calendar.getInstance();
             cal.setTime(date);
         } catch (ParseException e) {

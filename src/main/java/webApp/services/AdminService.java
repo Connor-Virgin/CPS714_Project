@@ -1,9 +1,15 @@
 package webApp.services;
 import webApp.models.Appt;
 import backend.DB_Appointment;
+import backend.DB_Doctor;
 import objects.Appointment;
+import objects.Doctor;
+
 import java.util.*;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class AdminService {
         // The admin should be able to view all appointments based on the doctor
 
@@ -22,5 +28,11 @@ public class AdminService {
                 return null;
             }
         }
+
+    //Populates List of doctors to display
+    public List<Doctor> getAllDoctors(){
+        List<Doctor> list = DB_Doctor.getAllDoctors();
+        return list;
+    }
     
 }

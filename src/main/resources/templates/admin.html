@@ -63,13 +63,48 @@
         <img th:src="@{/img/H.png}" style= "width:150px;height:150px;" alt= "Hospital Logo">
     </center>
     
-
     <p>
         Welcome Admin, you can edit and delete appointments below! As well as you can manage inventory below! 
     </p>
 
     <div class="dropdown">
-        <label>Calendar: </label>
+        <form th:object="${appt}" th:action="@{/getAppointsAdmin}" th:method="post">
+            <label>Select Date:</label>
+            <input th:field="*{app_datetime}" type="date" name="app_datetime" size="30">
+            <select th:field="*{doctor_id}" type="number" name = "Choose one">
+              <option th:each="doctor : ${allDoctors}" th:value = "${doctor.getDoctorId()}">Dr. <span th:text="${doctor.getFirstName()}"></span> <span th:text="${doctor.getLastName()}"></span> </option>
+           </select>
+           <input th:field="*{patient_id}" type="hidden" value="${sessionUser.user_id}" name="patient_id" size="30"> 
+          <button type="submit" onclick="myFunction()">Click here to check Avaliability!</button>
+        </form>
+
+        <table th:if="${appointments}">
+            <tr>
+                <th>Appointment ID</th>
+                <th>Doctor ID</th>
+                <th>Patient ID</th>
+            </tr>
+            
+            <tr th:each="appointment : ${appointments}">
+                <td class="align-middle" th:text="${appointment.getAppointmentId()}"></td>
+                <td class="align-middle" th:text="${appointment.getDoctorId()}"></td>
+                <td class="align-middle" th:text="${appointment.getPatientId()}"></td>
+            </tr>
+            <tr th:if="${appointments.isEmpty()}">
+                <td class="text-center" colspan="3">No Records found. Add some...!</td>
+            </tr>
+        </table>
+
+
+
+
+
+
+
+
+
+
+        <!-- <label>Calendar: </label>
         <input id="myDate" type="date" name="date" size="30" >
         <button onclick="myFunction()">Click here to edit/delete appointments within the selected date</button>
 
@@ -170,7 +205,7 @@
             }
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
-        </script>
+        </script> -->
         
     </div>
 </body>

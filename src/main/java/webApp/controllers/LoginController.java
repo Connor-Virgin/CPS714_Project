@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import java.util.List;
+import objects.Doctor;
+
 import webApp.models.Login;
 import webApp.models.SessionUser;
 import webApp.models.Appt;
@@ -55,6 +58,8 @@ public class LoginController {
                 return "login";
             }
             else{
+                List<Doctor> allDoctors = loginservice.getAllDoctors();
+                model.addAttribute("allDoctors", allDoctors);
                 Appt appt = new Appt();
                 model.addAttribute("sessionUser", sessionUser);
                 model.addAttribute("appt", appt );

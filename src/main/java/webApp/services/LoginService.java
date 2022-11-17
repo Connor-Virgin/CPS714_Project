@@ -1,9 +1,13 @@
 package webApp.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import webApp.models.Login;
 import webApp.models.SessionUser;
+import backend.DB_Doctor;
 import backend.DB_User;
+import objects.Doctor;
 import objects.User;
 
 /*
@@ -45,6 +49,12 @@ public class LoginService {
             System.out.println(e);
             return null;
         }
+    }
+
+    //Populates List of doctors to display
+    public List<Doctor> getAllDoctors(){
+        List<Doctor> list = DB_Doctor.getAllDoctors();
+        return list;
     }
 
 }

@@ -5,6 +5,9 @@ import objects.Appointment;
 import webApp.models.SessionUser;
 import java.util.*;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class ProfileService {
 
     // This will retrieve the user's info to  display on the profile page

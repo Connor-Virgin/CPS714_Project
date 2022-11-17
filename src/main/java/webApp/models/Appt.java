@@ -2,37 +2,44 @@ package webApp.models;
 import java.util.Calendar;
 
 public class Appt {
-    private Calendar app_datetime;
+    private String app_datetime;
     private int doctor_id;
     private int patient_id;
 
-    public Calendar getDateTime() {
-        return app_datetime;
+    public String getApp_datetime() {
+        return this.app_datetime;
     }
-    public void setAppDateTime(Calendar app_datetime) {
+
+    public void setApp_datetime(String app_datetime) {
         this.app_datetime = app_datetime;
     }
 
-    public int getDoctorId() {
-        return doctor_id;
+    public int getDoctor_id() {
+        return this.doctor_id;
     }
 
-    public int getPatientId() {
-        return patient_id;
-    }
-
-    public void setDoctorId(int doctor_id) {
+    public void setDoctor_id(int doctor_id) {
         this.doctor_id = doctor_id;
     }
 
-    public void setPatientId(int patient_id) {
+    public int getPatient_id() {
+        return this.patient_id;
+    }
+
+    public void setPatient_id(int patient_id) {
         this.patient_id = patient_id;
     }
 
-    public Appt(Calendar app_datetime, int doctor_id, int patient_id) {
+    public Appt(String app_datetime, int doctor_id, int patient_id) {
         this.app_datetime = app_datetime;
         this.doctor_id = doctor_id;
         this.patient_id = patient_id;
+    }
+
+    public Appt(){
+        this.app_datetime = null;
+        this.doctor_id = 0;
+        this.patient_id = 0;
     }
 
     @Override

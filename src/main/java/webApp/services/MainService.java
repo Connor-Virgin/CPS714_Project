@@ -1,6 +1,8 @@
 package webApp.services;
 
 import org.springframework.stereotype.Service;
+
+import java.text.SimpleDateFormat;
 import java.util.*;
 import backend.DB_Appointment;
 import objects.Appointment;
@@ -16,9 +18,16 @@ public class MainService {
 
     // Display available appointments by date and doctor
 
-    public List<Appointment> checkAvailableAppointments (Appt app) {
+    public List<Appointment> checkAvailableAppointments (Appt app) {  
         try {
-            List<Appointment> appointments = DB_Appointment.getAvailableAppointments(app.getDoctorId(), app.getPatientId(), app.getDateTime());
+
+            //Parse string into calendar object
+             SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+            Date date = sdf.parse(app.getApp_datetime());
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+
+            List<Appointment> appointments = DB_Appointment.getAvailableAppointments(app.getDoctor_id(), app.getPatient_id(), cal);
             return appointments;
         }
         catch (Exception e) {

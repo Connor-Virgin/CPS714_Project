@@ -3,11 +3,14 @@ package webApp.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import webApp.models.Login;
 import webApp.models.SessionUser;
+import webApp.models.Appt;
+
 import webApp.services.LoginService;
 
 /*
@@ -15,8 +18,13 @@ import webApp.services.LoginService;
  */
 
 @Controller
-@SessionAttributes({"sessionUserID"})
+@SessionAttributes({"sessionUser"})
 public class LoginController {
+
+    @ModelAttribute("sessionUser")
+    public SessionUser sessionUser(){
+        return new SessionUser();
+    }
 
     //Instance Variables
     private LoginService loginservice;
@@ -30,7 +38,6 @@ public class LoginController {
     @GetMapping("/login")
 	public String login(Model model, Login login) {
         //Thymeleaf looks for login.html in resources/templates/
-        model.addAttribute("sessionUserID", 0);
         return "login";
     }
     
@@ -48,9 +55,26 @@ public class LoginController {
                 return "login";
             }
             else{
+                Appt appt = new Appt();
                 model.addAttribute("sessionUser", sessionUser);
-                model.addAttribute("sessionUserID", sessionUser.getUser_id());
-                return "loginTest";
+                model.addAttribute("appt", appt );
+                
+                switch (sessionUser.getRole()) {
+                    //Admin
+                    case 1:
+                        return "admin";
+                    //Doctor
+                    case 2:
+                        return "main";
+                    //Patient
+                    case 3:
+                        return "main";
+                    default:
+                        //Pass a string called errorMessage to be dispayed on login.html
+                        model.addAttribute("errorMessage", "Error Identifying Account Type");
+                        //Refreshes login.html
+                        return "login";
+                }
             }
 
         }

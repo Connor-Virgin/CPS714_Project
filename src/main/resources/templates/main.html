@@ -65,18 +65,26 @@
     
 
     <p>
-        Welcome Dhruv please select an appointment date below! 
+        Welcome <span th:text="${sessionUser.firstname}">firstname</span> please select an appointment date below! 
+    </p>
+    <p>
+      Http Session User ID: <span th:text="${sessionUser}">user_id</span>
     </p>
 
     <div class="dropdown">
-        <label>Calendar: </label>
-        <input id="myDate" type="date" name="date" size="30" >
-        <select th:field="*{role}" type="role" name = "Choose one">
-          <option value = "" selected>Dr.Dhawan</option>
-          <option value = "">Dr.Ceamorebuts</option>
-          <option value = "">Dr.Ajay</option>
-       </select> 
-        <button onclick="myFunction()">Click here to check the selected dates avaliable time!</button>
+      
+      <!-- Form to check avaliable appointments -->
+      <form th:object="${appt}" th:action="@{/Availabilty}" th:method="post">
+        <label>Select Date:</label>
+        <input th:field="*{app_datetime}" type="date" name="app_datetime" size="30">
+        <select th:field="*{doctor_id}" type="number" name = "Choose one">
+          <option value = "1" selected> Dr.Dhawan </option>
+          <option value = "4"> Dr.Ceamorebuts </option>
+          <option value = "5"> Dr.Ajay </option>
+       </select>
+       <input th:field="*{patient_id}" type="hidden" value="${sessionUser.user_id}" name="patient_id" size="30"> 
+      <button type="submit" onclick="myFunction()">Click here to check Avaliability!</button>
+    </form>
 
         <div id="appointment" style="color:black;" >
             <h2 id="dayofweek">

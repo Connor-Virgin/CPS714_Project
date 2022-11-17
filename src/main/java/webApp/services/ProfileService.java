@@ -27,7 +27,7 @@ public class ProfileService {
 
     public List<Appointment> displayAppointments(Appt app) {
         try {
-            List<Appointment> list = DB_Appointment.getAppointmentsByPatientId(app.getPatientId());
+            List<Appointment> list = DB_Appointment.getAppointmentsByPatientId(app.getPatient_id());
             if (list == null) {
                 return null;
             }

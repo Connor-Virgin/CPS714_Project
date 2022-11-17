@@ -1,30 +1,10 @@
 
-* { 
-   /* border-style: solid;
-    border-radius: 20px;
-    border-width: 2px;
-    border-color: rgb(110, 133, 147);
-    */
 
-}
-
-button {padding: 10px;
-        border-style: solid;
-        border-radius: 20px;
-        font-size: 20px;
-        width: 150px;
-}
 body {
-<<<<<<< Updated upstream
-    background-color: blue;;
+    background-color: grey;
     color: blue;
-=======
-    background-color: rgb(135, 175, 208);
-    color: rgb(213, 226, 248);
->>>>>>> Stashed changes
     text-align: center;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    
 }
 
 h1 {
@@ -33,48 +13,5 @@ h1 {
 }
 
 p{
-    padding: 10px;
-    margin: 20px;
     font-size:15px
-}
-table{
-    border-style: solid;
-    border-radius: 20px;
-    background-color: white;
-
-    
-
-}
-form{
-    color:rgb(0, 0, 0);
-   
-    width: 100%;
-    /* box-sizing: border-box; */
-    border: 0px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: rgb(135, 175, 208);
-    /* background-image: url('searchicon.png'); */
-    /* background-position: 10px 10px;  */
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-
-
-}
-td{
-
-    border-style: solid;
-    border-radius: 20px;
-
-}
-
-    input:focus {
-        background-color: rgb(208, 234, 255);
-      }
-
-
-.appointmentButton{
-    color:rgb(203, 66, 66);
-    font-size: 200px;
-
 }

@@ -1,99 +1,108 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">   
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <link rel="stylesheet" th:href= "@{/css/style.css}"/>
-</head> 
-<style>
-    * {box-sizing: border-box}
-    body {font-family: "Lato", sans-serif;}
-    
-    /* Style the tab */
-    .tab {
-      float: left;
-      border: 1px solid #ccc;
-      background-color: #f1f1f1;
-      width: 30%;
-      height: 300px;
-    }
-    
-    /* Style the buttons inside the tab */
-    .tab button {
-      display: block;
-      background-color: inherit;
-      color: black;
-      padding: 22px 16px;
-      width: 100%;
-      border: none;
-      outline: none;
-      text-align: left;
-      cursor: pointer;
-      transition: 0.3s;
-      font-size: 17px;
-    }
-    
-    /* Change background color of buttons on hover */
-    .tab button:hover {
-      background-color: #ddd;
-    }
-    
-    /* Create an active/current "tab button" class */
-    .tab button.active {
-      background-color: #ccc;
-    }
-    
-    /* Style the tab content */
-    .tabcontent {
-      float: left;
-      padding: 0px 12px;
-      border: 1px solid #ccc;
-      width: 70%;
-      border-left: none;
-      height: 300px;
-    }
-    </style>
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
 
 <body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+        <!-- Brand -->
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img th:src="@{/img/H.png}" alt="Logo" width="40" height="40" class="d-inline-block align-text-center">
+                Hospital ERP
+            </a>
+        </div>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <h1>
-        Hospital ERP
+        Admin Page
     </h1>
 
-    <center>
-        <img th:src="@{/img/H.png}" style= "width:150px;height:150px;" alt= "Hospital Logo">
-    </center>
-    
-    <p>
-        Welcome Admin, you can edit and delete appointments below! As well as you can manage inventory below! 
-    </p>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                <h2 class="text-center"> Edit/Delete Appointments </h2>
+                <div class="card-body">
+                    <form th:object="${appt}" th:action="@{/getAppointsAdmin}" th:method="post">
+                        <div class="form-group">
+                            <label>Select Date:</label>
+                            <input th:field="*{app_datetime}" type="date" name="app_datetime" size="30">
+                        </div>
+                        <div class="form-group">
+                            <label>Select Doctor:</label>
+                            <select th:field="*{doctor_id}" type="number" name="Choose one">
+                                <option th:each="doctor : ${allDoctors}" th:value="${doctor.getDoctorId()}">Dr. <span
+                                        th:text="${doctor.getFirstName()}"></span> <span
+                                        th:text="${doctor.getLastName()}"></span> </option>
+                            </select>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <form th:object="${displayAppoint}" th:action="@{/deleteAppointsAdmin}" th:method="post">
+            <table class="table table-striped table-bordered" th:if="${appointments}">
+                <thead class="table-dark">
+                    <tr>
+                        <th> Appointment ID </th>
+                        <th> Doctor ID </th>
+                        <th> Patient ID </th>
+                        <th> Date </th>
+                        <th> Actions </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="appointment : ${appointments}">
+                        <td th:text="${appointment.getAppointmentId()}"></td>
+                        <td th:text="${appointment.getDoctorId()}"></td>
+                        <td th:text="${appointment.getPatientId()}"></td>
+                        <td th:text="${#calendars.format(appointment.getAppointmentStart())}"></td>
+                        <td>
+                            <a th:href="@{/deleteAppointsAdmin/{id}(id=${appointment.getAppointmentId()})}"
+                                class="btn btn-primary">Edit</a>
 
-    <div class="dropdown">
-        <form th:object="${appt}" th:action="@{/getAppointsAdmin}" th:method="post">
-            <label>Select Date:</label>
-            <input th:field="*{app_datetime}" type="date" name="app_datetime" size="30">
-            <select th:field="*{doctor_id}" type="number" name = "Choose one">
-              <option th:each="doctor : ${allDoctors}" th:value = "${doctor.getDoctorId()}">Dr. <span th:text="${doctor.getFirstName()}"></span> <span th:text="${doctor.getLastName()}"></span> </option>
-           </select>
-           <input th:field="*{patient_id}" type="hidden" value="${sessionUser.user_id}" name="patient_id" size="30"> 
-          <button type="submit" onclick="myFunction()">Click here to check Avaliability!</button>
+                            <a th:href="@{/deleteAppointsAdmin/{id}(id=${appointment.getAppointmentId()})}"
+                                class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    <tr th:if="${appointments.isEmpty()}">
+                        <td class="text-center" colspan="4">No Appointments on Record</td>
+                    </tr>
+                </tbody>
+            </table>
         </form>
 
-        <table th:if="${appointments}">
-            <tr>
-                <th>Appointment ID</th>
-                <th>Doctor ID</th>
-                <th>Patient ID</th>
-            </tr>
-            
-            <tr th:each="appointment : ${appointments}">
-                <td class="align-middle" th:text="${appointment.getAppointmentId()}"></td>
-                <td class="align-middle" th:text="${appointment.getDoctorId()}"></td>
-                <td class="align-middle" th:text="${appointment.getPatientId()}"></td>
-            </tr>
-            <tr th:if="${appointments.isEmpty()}">
-                <td class="text-center" colspan="3">No Records found. Add some...!</td>
-            </tr>
-        </table>
+        <h2>
+            <span th:if="${message}" th:text="${message}">message</span>
+        </h2>
+    </div>
 
 
 
@@ -103,8 +112,7 @@
 
 
 
-
-        <!-- <label>Calendar: </label>
+    <!-- <label>Calendar: </label>
         <input id="myDate" type="date" name="date" size="30" >
         <button onclick="myFunction()">Click here to edit/delete appointments within the selected date</button>
 
@@ -206,7 +214,8 @@
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
         </script> -->
-        
-    </div>
+
+
 </body>
+
 </html>

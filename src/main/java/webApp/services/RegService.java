@@ -35,7 +35,7 @@ public class RegService {
         try {
 
             //Parse string into calendar object
-            SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date date = sdf.parse(reg.getBirthdate());
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);

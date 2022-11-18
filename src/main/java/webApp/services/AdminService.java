@@ -1,10 +1,12 @@
 package webApp.services;
 import webApp.models.Appt;
+import webApp.models.DisplayAppoint;
 import backend.DB_Appointment;
 import backend.DB_Doctor;
 import objects.Appointment;
 import objects.Doctor;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import org.springframework.stereotype.Service;
@@ -26,6 +28,19 @@ public class AdminService {
             catch (Exception e) {
                 System.out.println(e);
                 return null;
+            }
+        }
+
+        public boolean deleteAppt(int ID){
+            try {
+                if(DB_Appointment.deleteAppointmentByID(ID)){
+                    System.out.println("Deleted Appointment with ID: " + ID);
+                    return true;
+                }
+                return false;
+            } catch (Exception e) {
+                System.out.println(e);
+                return false;
             }
         }
 

@@ -11,6 +11,10 @@ public class Appointment {
     private int patient_id;
 
     // Setter Classes
+    public void setAppointmentId(int appointment_id) {
+        this.appointment_id = appointment_id;
+    }
+
     public void setAppointmentDateTime(Calendar appointment_datetime) {
         this.appointment_datetime = appointment_datetime;
     }

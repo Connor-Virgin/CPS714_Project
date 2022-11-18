@@ -61,6 +61,19 @@ public class DB_Appointment {
 
     }
 
+    public static boolean deleteAppointmentByID(int ID) {
+
+        String sql;
+
+        sql = "DELETE FROM " + APPOINTMENT_TABLE + " ";
+        sql += "WHERE appointment_id = " + ID;
+
+        boolean app_success = SQLManager.execute(sql);
+
+        return app_success;
+
+    }
+
     // GET Appointment Methods
     public static List<Appointment> getAvailableAppointments(int doctor_id, int patient_id, Calendar appointment_date) {
         List<Appointment> available = new ArrayList<Appointment>();

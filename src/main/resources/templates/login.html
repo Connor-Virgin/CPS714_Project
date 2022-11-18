@@ -1,58 +1,69 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">   
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <link rel="stylesheet" th:href= "@{/css/style.css}"/>
-</head> 
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
 
 <body>
-    <h1>
-        Hospital ERP
-    </h1>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
 
-    <center>
-        <img th:src="@{/img/H.png}" style= "width:150px;height:150px;" alt= "Hospital Logo">
-    </center>
-
-    <p>
-        Login Below!
-    </p>
-
-    <form th:object="${login}" th:action="@{/submit}" th:method="post">
-        <table border="2" align="center" cellpadding="5" cellspacing="5">
-            <tr>
-                <td> Enter email :</td>
-                <td> <input th:field="*{email}" type="text" name="email" size="30"> </td>
-            </tr>
-            <tr>
-                <td> Enter password :</td>
-                <td> <input th:field="*{password}" type="password" name="password" size="30"> </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                    <a href="profile.html">
-                        <button type="submit">Login</button>
-                    </a>
-                </td>
-            </tr>
-        </table>
-    </form>
-
-    <form th:action="@{/registration}" th:method="get">
-        <p>
-            Don't have an account with us? 
-            <a href="registration.html">
-                <button type="submit">Click here to register!</button>
+        <!-- Brand -->
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img th:src="@{/img/H.png}" alt="Logo" width="40" height="40" class="d-inline-block align-text-center">
+                Hospital ERP
             </a>
-        </p>
-    </form>
-    
+        </div>
 
-    <h2>
-        <span th:if="${errorMessage}" th:text="${errorMessage}">errorMessage</span>
-    </h2>
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <br>
+    <center>
+        <img th:src="@{/img/H.png}" style="width:150px;height:150px;" alt="Hospital Logo">
+    </center>
+    <br>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                <h2 class="text-center"> Login </h2>
+                <div class="card-body">
+                    <form th:object="${login}" th:action="@{/submit}" th:method="post">
+                        <div class="form-group">
+                            <label> Enter email :</label>
+                            <input th:field="*{email}" type="text" name="email" size="30" class = "form-control">
+                        </div>
+                        <div class="form-group">
+                            <label> Enter password :</label>
+                            <input th:field="*{password}" type="password" name="password" size="30" class = "form-control"> 
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <form th:action="@{/registration}" th:method="get">
+            <p>
+                Don't have an account with us?
+                <button type="submit" class="btn btn-secondary">Register</button>
+            </p>
+        </form>
+        <h2>
+            <span th:if="${errorMessage}" th:text="${errorMessage}">errorMessage</span>
+        </h2>
+    </div>
+
+
 </body>
+
 </html>

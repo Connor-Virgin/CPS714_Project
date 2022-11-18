@@ -35,7 +35,7 @@ public class DB_Appointment {
         else {
             sql = "UPDATE" + APPOINTMENT_TABLE + " SET ";
             sql += "appointment_datetime = '" + SQLManager.CalToSQLDateTime(app.getAppointmentStart()) + "', ";
-            sql += "appointment_duration = " + app.getAppointmentDuration() + ", ";
+            sql += "appointment_duration_min = " + app.getAppointmentDuration() + ", ";
             sql += "patient_id = " + app.getPatientId() + ", ";
             sql += "doctor_id = " + app.getDoctorId() + " ";
             sql += "WHERE appointment_id = " + app.getAppointmentId();

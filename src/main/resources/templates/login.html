@@ -37,11 +37,12 @@
                     <form th:object="${login}" th:action="@{/submit}" th:method="post">
                         <div class="form-group">
                             <label> Enter email :</label>
-                            <input th:field="*{email}" type="text" name="email" size="30" class = "form-control">
+                            <input th:field="*{email}" type="text" name="email" size="30" class="form-control">
                         </div>
                         <div class="form-group">
                             <label> Enter password :</label>
-                            <input th:field="*{password}" type="password" name="password" size="30" class = "form-control"> 
+                            <input th:field="*{password}" type="password" name="password" size="30"
+                                class="form-control">
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">

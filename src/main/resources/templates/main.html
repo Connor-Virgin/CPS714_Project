@@ -77,10 +77,13 @@
     <br>
     <form th:if="${appointments}" th:object="${appt}" th:action="@{/bookAppoint}" th:method="post">
 
-      <select th:field="*{app_datetime}" type="text" name="Choose one" class="form-select form-select-lg mb-8" aria-label=".form-select-lg example">
-        <option th:each="appointment : ${appointments}" th:value="${#calendars.format(appointment.getAppointmentStart(), 'dd/MMM/yyyy HH:mm')}"> 
-          Date: <span th:text="${#calendars.format(appointment.getAppointmentStart())}"></span>  Duration: <span th:text="${appointment.getAppointmentDuration()}"> </span> 
-      </option>
+      <select th:field="*{app_datetime}" type="text" name="Choose one" class="form-select form-select-lg mb-8"
+        aria-label=".form-select-lg example">
+        <option th:each="appointment : ${appointments}"
+          th:value="${#calendars.format(appointment.getAppointmentStart(), 'dd/MMM/yyyy HH:mm')}">
+          Date: <span th:text="${#calendars.format(appointment.getAppointmentStart())}"></span> Duration: <span
+            th:text="${appointment.getAppointmentDuration()}"> </span>
+        </option>
       </select>
       <button type="submit" class="btn btn-primary">
         Book

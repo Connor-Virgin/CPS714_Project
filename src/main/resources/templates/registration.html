@@ -1,31 +1,53 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">    
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <link rel="stylesheet" th:href= "@{/css/style.css}"/>
-</head> 
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
 
-<!-- Thymeleaf switch statment based on regRole
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+        <!-- Brand -->
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img th:src="@{/img/H.png}" alt="Logo" width="40" height="40" class="d-inline-block align-text-center">
+                Hospital ERP
+            </a>
+        </div>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Thymeleaf switch statment based on regRole
 Displays div for patient registration if regRole = 3
 Displays div for doctor registraion of regRole = 2 -->
 
-    <div th:switch="${regRole}">
+    <div class="container text-center" th:switch="${regRole}">
         <div th:case="'3'">
-            <h1 style="color:White;font-family:verdana;font-size:36px;text-align: center;background-color:#7289da">
+            <h1>
 
                 Patient Registration Page
-        
+
             </h1>
-            <center>
-                <img th:src="@{/img/H.png}" style= "width:150px;height:150px;" alt= "Hospital Logo">
-            </center>
-        
             <p>
                 Register Below!
             </p>
             <form th:object="${patientReg}" th:action="@{/patientReg}" th:method="post">
-                <table border="2" align="center" cellpadding="5" cellspacing="5">
+                <table align="center">
                     <tr>
                         <td> Enter your First Name:</td>
                         <td> <input th:field="*{firstname}" type="firstname" name="firstname" size="30"> </td>
@@ -70,13 +92,23 @@ Displays div for doctor registraion of regRole = 2 -->
                         <td> Enter Weight(kg) :</td>
                         <td> <input th:field="*{weight_kg}" type="number" name="weight_kg" size="30"> </td>
                     </tr>
-                </table>
+                </table><!-- Navbar links -->
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/login}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+                <br>
                 <p>
                     <a href="login.html">
-                        <button type="submit">Register as Patient</button>
+                        <button type="submit" class="btn btn-primary">Register</button>
                     </a>
                 </p>
             </form>
+            <br>
+            <br>
             <form th:action="@{/doctorRegistration}" th:method="get">
                 <p>
                     <a href="registration.html">
@@ -87,20 +119,16 @@ Displays div for doctor registraion of regRole = 2 -->
         </div>
 
         <div th:case="'2'">
-            <h1 style="color:White;font-family:verdana;font-size:36px;text-align: center;background-color:#7289da">
+            <h1>
 
                 Doctor Registration Page
-        
+
             </h1>
-            <center>
-                <img th:src="@{/img/H.png}" style= "width:150px;height:150px;" alt= "Hospital Logo">
-            </center>
-        
             <p>
                 Register Below!
             </p>
             <form th:object="${doctorReg}" th:action="@{/doctorReg}" th:method="post">
-                <table border="2" align="center" cellpadding="5" cellspacing="5">
+                <table align="center">
                     <tr>
                         <td> Enter your First Name:</td>
                         <td> <input th:field="*{firstname}" type="firstname" name="firstname" size="30"> </td>
@@ -134,12 +162,15 @@ Displays div for doctor registraion of regRole = 2 -->
                         <td> <input th:field="*{position}" type="text" name="position" size="30"> </td>
                     </tr>
                 </table>
+                <br>
                 <p>
                     <a href="login.html">
-                        <button type="submit">Register as Doctor</button>
+                        <button type="submit" class="btn btn-primary">Register</button>
                     </a>
                 </p>
             </form>
+            <br>
+            <br>
             <form th:action="@{/registration}" th:method="get">
                 <p>
                     <a href="registration.html">
@@ -150,4 +181,5 @@ Displays div for doctor registraion of regRole = 2 -->
         </div>
     </div>
 </body>
+
 </html>

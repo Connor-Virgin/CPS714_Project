@@ -81,7 +81,6 @@ public class LoginController {
                         return "login";
                 }
             }
-
         }
         catch(Exception e){
             //Pass a string called errorMessage to be dispayed on login.html

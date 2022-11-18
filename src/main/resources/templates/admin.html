@@ -44,10 +44,10 @@
                 <h2 class="text-center"> Edit/Delete Appointments </h2>
                 <div class="card-body">
                     <form th:object="${appt}" th:action="@{/getAppointsAdmin}" th:method="post">
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label>Select Date:</label>
                             <input th:field="*{app_datetime}" type="date" name="app_datetime" size="30">
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label>Select Doctor:</label>
                             <select th:field="*{doctor_id}" type="number" name="Choose one">

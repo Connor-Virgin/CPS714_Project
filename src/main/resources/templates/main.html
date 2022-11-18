@@ -75,7 +75,7 @@
     </form>
     <br>
     <br>
-    <form th:object="${appt}" th:action="@{/bookAppoint}" th:method="post">
+    <form th:if="${appointments}" th:object="${appt}" th:action="@{/bookAppoint}" th:method="post">
 
       <select th:field="*{app_datetime}" type="text" name="Choose one" class="form-select form-select-lg mb-8" aria-label=".form-select-lg example">
         <option th:each="appointment : ${appointments}" th:value="${#calendars.format(appointment.getAppointmentStart(), 'dd/MMM/yyyy HH:mm')}"> 

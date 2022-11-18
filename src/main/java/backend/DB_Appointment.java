@@ -19,7 +19,7 @@ public class DB_Appointment {
         if (app.getAppointmentId() == 0) {
             sql = "INSERT INTO " + APPOINTMENT_TABLE + " (";
             sql += "appointment_datetime, ";
-            sql += "appointment_duration, ";
+            sql += "appointment_duration_min, ";
             sql += "patient_id, ";
             sql += "doctor_id";
             sql += ")";

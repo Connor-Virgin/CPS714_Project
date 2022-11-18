@@ -24,7 +24,7 @@ public class DB_Appointment {
             sql += "doctor_id";
             sql += ")";
             sql += "VALUES (";
-            sql += "'" + SQLManager.CalToSQLDateTime(app.getAppointmentStart()) + "', ";
+            sql += "'" + SQLManager.CalToSQLDateTime(app.getAppointmentStart()) + "',";
             sql += app.getAppointmentDuration() + ", ";
             sql += "'" + app.getPatientId() + "', ";
             sql += "'" + app.getDoctorId()+ "'";

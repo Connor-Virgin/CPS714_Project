@@ -48,7 +48,7 @@ public class MainService {
         try {
 
             //Parse string into calendar object
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy HH:mm");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             Date date = sdf.parse(appt.getApp_datetime());
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);

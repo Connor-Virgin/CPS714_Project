@@ -80,7 +80,7 @@
       <select th:field="*{app_datetime}" type="text" name="Choose one" class="form-select form-select-lg mb-8"
         aria-label=".form-select-lg example">
         <option th:each="appointment : ${appointments}"
-          th:value="${#calendars.format(appointment.getAppointmentStart(), 'dd/MMM/yyyy HH:mm')}">
+          th:value="${#calendars.format(appointment.getAppointmentStart(),'yyyy-MM-dd HH:mm')}">
           Date: <span th:text="${#calendars.format(appointment.getAppointmentStart())}"></span> Duration: <span
             th:text="${appointment.getAppointmentDuration()}"> </span>
         </option>

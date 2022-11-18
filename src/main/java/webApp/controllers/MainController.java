@@ -90,7 +90,7 @@ public class MainController {
             model.addAttribute("message", "Success: Appointment Created");
         }
         else{
-            model.addAttribute("message", "SUCCESS: Appointment Created");
+            model.addAttribute("message", "Error: Appointment not Created");
         }
         // repopulates doctor list
         List<Doctor> allDoctors = mainService.getAllDoctors();

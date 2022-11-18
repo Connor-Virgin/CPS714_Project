@@ -78,14 +78,17 @@
         <label>Select Date:</label>
         <input th:field="*{app_datetime}" type="date" name="app_datetime" size="30">
         <select th:field="*{doctor_id}" type="number" name = "Choose one">
+          <option th:each="doctor : ${allDoctors}" th:value = "${doctor.getDoctorId()}">Dr. <span th:text="${doctor.getFirstName()}"></span> <span th:text="${doctor.getLastName()}"></span> </option>
+          <!---
           <option value = "1" selected> Dr.Dhawan </option>
           <option value = "4"> Dr.Ceamorebuts </option>
           <option value = "5"> Dr.Ajay </option>
+        -->
        </select>
        <input th:field="*{patient_id}" type="hidden" value="${sessionUser.user_id}" name="patient_id" size="30"> 
       <button type="submit" onclick="myFunction()">Click here to check Avaliability!</button>
     </form>
-
+  
     <form th:action="@{/profile}" th:method="get">
       <p>
           Want to see your appointments? 
@@ -179,7 +182,7 @@
             
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
-        </script>
+        </script> 
 
         
         

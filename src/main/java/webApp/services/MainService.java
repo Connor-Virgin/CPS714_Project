@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import backend.DB_Appointment;
+import backend.DB_Doctor;
 import objects.Appointment;
+import objects.Doctor;
 import webApp.models.Appt;
 
 /*
@@ -22,12 +24,16 @@ public class MainService {
         try {
 
             //Parse string into calendar object
-             SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
             Date date = sdf.parse(app.getApp_datetime());
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
 
             List<Appointment> appointments = DB_Appointment.getAvailableAppointments(app.getDoctor_id(), app.getPatient_id(), cal);
+            if (appointments == null) {
+                System.out.println("No available appointments");
+                return null;
+            }
             return appointments;
         }
         catch (Exception e) {
@@ -49,5 +55,11 @@ public class MainService {
             return false;
         }
     }
+
+    //Populates List of doctors to display
+    public List<Doctor> getAllDoctors(){
+        List<Doctor> list = DB_Doctor.getAllDoctors();
+        return list;
+     }
     
 }

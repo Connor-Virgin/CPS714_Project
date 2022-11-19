@@ -159,8 +159,11 @@
         document.getElementById("defaultOpen").click();
         </script>
            
-    <a href="main.html">
-        <button>Make an appointment here!</button>
-    </a>
+           <form th:action="@{/main}" th:method="get">
+            <p>
+              Book an Appointment?
+              <button type="submit" class="btn btn-secondary">Booking</button>
+            </p>
+          </form>
 </body>
 </html>

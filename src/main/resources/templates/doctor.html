@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Doctor Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+        <!-- Brand -->
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img th:src="@{/img/H.png}" alt="Logo" width="40" height="40" class="d-inline-block align-text-center">
+                Hospital ERP
+            </a>
+        </div>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Title -->
+    <h1>
+        Doctor Page
+    </h1>
+    <div class="container center">
+        <h2>
+            Welcome Dr. <span th:text="${sessionUser.firstname}">firstname</span> <span
+                th:text="${sessionUser.lastname}">lastname</span>!
+        </h2>
+        <br>
+        <br>
+        <div th:if="${patient}" class="card">
+            <div class="card-header">
+                Patient Info
+            </div>
+            <div class="card-body">
+                <h5 class="card-title" th:text="${patient.getFirstName()} + ' ' + ${patient.getLastName()}"></h5>
+                <p class="card-text">Patient Information Here (including notes?)</p>
+                <a th:href="@{/doctor/}" class="btn btn-danger">Back</a>
+            </div>
+        </div>
+        <div class="container text-center">
+            <table th:if="${appointments}" class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th> Appointment ID </th>
+                        <th> Doctor ID </th>
+                        <th> Patient ID </th>
+                        <th> Date </th>
+                        <th> Actions </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="appointment : ${appointments}">
+                        <td th:text="${appointment.getAppointmentId()}"></td>
+                        <td th:text="${appointment.getDoctorId()}"></td>
+                        <td th:text="${appointment.getPatientId()}"></td>
+                        <td th:text="${#calendars.format(appointment.getAppointmentStart())}"></td>
+                        <td>
+                            <a th:href="@{/patientInfo/{id}(id=${appointment.getPatientId()})}"
+                                class="btn btn-primary">Paitent Info</a>
+
+                            <!-- <a th:href="@{/deleteAppointsAdmin/{id}(id=${appointment.getAppointmentId()})}"
+                                class="btn btn-danger">Delete</a> -->
+                        </td>
+                    </tr>
+                    <tr th:if="${appointments.isEmpty()}">
+                        <td class="text-center" colspan="4">No Appointments on Record</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2>
+            <span th:if="${message}" th:text="${message}">message</span>
+        </h2>
+
+
+    </div>
+</body>
+
+</html>

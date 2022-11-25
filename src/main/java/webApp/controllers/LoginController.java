@@ -70,7 +70,7 @@ public class LoginController {
                         return "admin";
                     //Doctor
                     case 2:
-                        return "main";
+                        return "redirect:/doctor";
                     //Patient
                     case 3:
                         return "main";

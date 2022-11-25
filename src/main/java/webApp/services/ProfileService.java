@@ -1,7 +1,9 @@
 package webApp.services;
 import webApp.models.Appt;
 import backend.DB_Appointment;
+import backend.DB_Patient;
 import objects.Appointment;
+import objects.Patient;
 import webApp.models.SessionUser;
 import java.util.*;
 
@@ -9,6 +11,47 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProfileService {
+    //Returns list of appointments given a patients's userID
+    public List<Appointment> getPatientAppoints(int userID) {
+
+        try {
+            Patient patient = DB_Patient.getPatientByUserId(userID);
+            System.out.println(patient.getPatientId());
+            List<Appointment> list = DB_Appointment.getAppointmentsByPatientId(patient.getPatientId());
+            if (list == null) {
+                return null;
+            }
+            return list;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    //Returns a Patient given a patientID
+    public Patient patientInfo(int patientID){
+        try {
+            Patient patient = DB_Patient.getPatientById(patientID);
+            return patient;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public boolean deleteAppt(int ID){
+        try {
+            if(DB_Appointment.deleteAppointmentByID(ID)){
+                System.out.println("Deleted Appointment with ID: " + ID);
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
 
     // This will retrieve the user's info to  display on the profile page
 

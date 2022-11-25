@@ -1,146 +1,218 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">  
-  <head>
-    <title>Profile Page</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  </head>
-  
-  <body>
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  
-      <!-- Brand -->
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img th:src="@{/img/H.png}" alt="Logo" width="40" height="40" class="d-inline-block align-text-center">
-          Hospital ERP
-        </a>
-      </div>
-  
-      <!-- Toggler/collapsibe Button -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <!-- Navbar links -->
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" th:href="@{/login}">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </nav>  
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Profile Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
 <body>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+    <!-- Brand -->
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img th:src="@{/img/H.png}" alt="Logo" width="40" height="40" class="d-inline-block align-text-center">
+        Hospital ERP
+      </a>
+    </div>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/login}">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <body>
     <h1>
-        Welcome Back, <span th:text="${sessionUser.firstname}">firstname</span> !
+      Welcome Back, <span th:text="${sessionUser.firstname}">firstname</span> !
     </h1>
     <center>
-        <img th:src="@{/img/H.png}" style= "width:150px;height:150px;" alt= "Hospital Logo">
+      <img th:src="@{/img/H.png}" style="width:150px;height:150px;" alt="Hospital Logo">
     </center>
 
-        <table border="2" align="center" cellpadding="5" cellspacing="5">
-            <tr>
-                <td> Account Type:</td>
-                <td> <p th:switch="${sessionUser.role}">
-                        <span th:case="'1'">Admin</span>
-                        <span th:case="'2'">Doctor</span>
-                        <span th:case="'3'">Patient</span>
-                        <span th:case="'4'">Nurse</span>
-                        <span th:case="*">?</span>
-              </p> </td>
-            </tr>
-            <tr>
-                <td> First Name:</td>
-                <td> <span th:text="${sessionUser.firstname}">firstname</span> </td>
-            </tr>
-            <tr>
+    <div class="card text-center">
+      <h2 class="text-center"> Patient Profile </h2>
+      <div class="card-body">
+        <div class="row text-center">
+          <div class="col">
+            <table>
+              <tr>
+                <td class="text-center" colspan="2">Account Information</td>
+              </tr>
+              <tr>
+                <td>Account Type:</td>
+                <td>
+                  <p th:switch="${patient.getRole()}">
+                    <span th:case="'1'">Admin</span>
+                    <span th:case="'2'">Doctor</span>
+                    <span th:case="'3'">Patient</span>
+                    <span th:case="'4'">Nurse</span>
+                    <span th:case="*">?</span>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>First Name:</td>
+                <td> <span th:text="${patient.getFirstName()}">firstname</span> </td>
+              </tr>
+              <tr>
                 <td>Last Name:</td>
-                <td> <span th:text="${sessionUser.lastname}">lastname</span> </td>
-            </tr>
-            <tr>
-                <td> Email Address:</td>
-                <td> <span th:text="${sessionUser.email}">email</span> </td>
-            </tr>
-        </table>
-   
+                <td> <span th:text="${patient.getLastName()}">lastname</span> </td>
+              </tr>
+              <tr>
+                <td>Email Address:</td>
+                <td> <span th:text="${patient.getEmail()}">email</span> </td>
+              </tr>
+              <tr>
+                <td>Telephone:</td>
+                <td> <span th:text="${patient.getTelephone()}">telephone</span> </td>
+              </tr>
+              <tr>
+                <td>Address:</td>
+                <td> <span th:text="${patient.getAddress()}">address</span> </td>
+              </tr>
+              <tr>
+                <td>Status:</td>
+                <td>
+                  <p th:switch="${patient.getStatus()}">
+                    <span th:case="'1'">Staff</span>
+                    <span th:case="'2'">Inpatient</span>
+                    <span th:case="'3'">Outpatient</span>
+                    <span th:case="*">?</span>
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="col">
+            <table>
+              <tr>
+                <td class="text-center" colspan="2">Patient Information</td>
+              </tr>
+              <tr>
+                <td>Healthcard:</td>
+                <td> <span th:text="${patient.getHealthCard()}">healthcard</span> </td>
+              </tr>
+              <tr>
+                <td>Birth Date:</td>
+                <td th:text="${#calendars.format(patient.getBirthdate())}">birthdate</td>
+              </tr>
+              <tr>
+                <td>Age:</td>
+                <td> <span th:text="${patient.getAge()}">age</span> </td>
+              </tr>
+              <tr>
+                <td>Gender:</td>
+                <td> <span th:text="${patient.getGender()}">gender</span> </td>
+              </tr>
+              <tr>
+                <td>Height(cm):</td>
+                <td> <span th:text="${patient.getHeight()}">height_cm</span> </td>
+              </tr>
+              <tr>
+                <td>Weight(kg):</td>
+                <td> <span th:text="${patient.getWeight()}">weight_kg</span> </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <style>
-        * {box-sizing: border-box}
-        body {font-family: "Lato", sans-serif;}
-        
-        /* Style the tab */
-        .tab {
-          float: left;
-          border: 1px solid #ccc;
-          background-color: #f1f1f1;
-          width: 30%;
-          height: 300px;
-        }
-        
-        /* Style the buttons inside the tab */
-        .tab button {
-          display: block;
-          background-color: inherit;
-          color: black;
-          padding: 22px 16px;
-          width: 100%;
-          border: none;
-          outline: none;
-          text-align: left;
-          cursor: pointer;
-          transition: 0.3s;
-          font-size: 17px;
-        }
-        
-        /* Change background color of buttons on hover */
-        .tab button:hover {
-          background-color: #ddd;
-        }
-        
-        /* Create an active/current "tab button" class */
-        .tab button.active {
-          background-color: #ccc;
-        }
-        
-        /* Style the tab content */
-        .tabcontent {
-          float: left;
-          padding: 0px 12px;
-          border: 1px solid #ccc;
-          width: 70%;
-          border-left: none;
-          height: 300px;
-        }
-        </style>
-        </head>
-        <body>
-        
-        <h2>Your Current Apppointments:</h2>
-        
-        <div class="tab">
-          <button class="tablinks" onclick="openCity(event, 'monday')" id="defaultOpen">11/07/22</button>
-          <button class="tablinks" onclick="openCity(event, 'tuesday')">11/07/23</button>
-          <button class="tablinks" onclick="openCity(event, 'wednesday')">11/07/24</button>
-        </div>
-        
-        <div id="monday" class="tabcontent">
-          <h3>Monday</h3>
-          <p>Appointment with Dr.Ajay</p>
-        </div>
-        
-        <div id="tuesday" class="tabcontent">
-            <h3>Tuesday</h3>
-            <p>Appointment with Dr.Dhawan</p>
-        </div>
-        
-        <div id="wednesday" class="tabcontent">
-            <h3>Wednesday</h3>
-            <p>Appointment with Dr.Ceamorebuts</p>
-        </div>
-        
-        <script>
+      * {
+        box-sizing: border-box
+      }
+
+      body {
+        font-family: "Lato", sans-serif;
+      }
+
+      /* Style the tab */
+      .tab {
+        float: left;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        width: 30%;
+        height: 300px;
+      }
+
+      /* Style the buttons inside the tab */
+      .tab button {
+        display: block;
+        background-color: inherit;
+        color: black;
+        padding: 22px 16px;
+        width: 100%;
+        border: none;
+        outline: none;
+        text-align: left;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 17px;
+      }
+
+      /* Change background color of buttons on hover */
+      .tab button:hover {
+        background-color: #ddd;
+      }
+
+      /* Create an active/current "tab button" class */
+      .tab button.active {
+        background-color: #ccc;
+      }
+
+      /* Style the tab content */
+      .tabcontent {
+        float: left;
+        padding: 0px 12px;
+        border: 1px solid #ccc;
+        width: 70%;
+        border-left: none;
+        height: 300px;
+      }
+    </style>
+    </head>
+
+    <body>
+
+      <h2>Your Current Apppointments:</h2>
+
+      <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'monday')" id="defaultOpen">11/07/22</button>
+        <button class="tablinks" onclick="openCity(event, 'tuesday')">11/07/23</button>
+        <button class="tablinks" onclick="openCity(event, 'wednesday')">11/07/24</button>
+      </div>
+
+      <div id="monday" class="tabcontent">
+        <h3>Monday</h3>
+        <p>Appointment with Dr.Ajay</p>
+      </div>
+
+      <div id="tuesday" class="tabcontent">
+        <h3>Tuesday</h3>
+        <p>Appointment with Dr.Dhawan</p>
+      </div>
+
+      <div id="wednesday" class="tabcontent">
+        <h3>Wednesday</h3>
+        <p>Appointment with Dr.Ceamorebuts</p>
+      </div>
+
+      <script>
         function openCity(evt, cityName) {
           var i, tabcontent, tablinks;
           tabcontent = document.getElementsByClassName("tabcontent");
@@ -154,16 +226,17 @@
           document.getElementById(cityName).style.display = "block";
           evt.currentTarget.className += " active";
         }
-        
+
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
-        </script>
-           
-           <form th:action="@{/main}" th:method="get">
-            <p>
-              Book an Appointment?
-              <button type="submit" class="btn btn-secondary">Booking</button>
-            </p>
-          </form>
-</body>
+      </script>
+
+      <form th:action="@{/main}" th:method="get">
+        <p>
+          Book an Appointment?
+          <button type="submit" class="btn btn-secondary">Booking</button>
+        </p>
+      </form>
+    </body>
+
 </html>

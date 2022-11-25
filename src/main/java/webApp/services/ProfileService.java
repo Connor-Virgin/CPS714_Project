@@ -1,8 +1,10 @@
 package webApp.services;
 import webApp.models.Appt;
 import backend.DB_Appointment;
+import backend.DB_Doctor;
 import backend.DB_Patient;
 import objects.Appointment;
+import objects.Doctor;
 import objects.Patient;
 import webApp.models.SessionUser;
 import java.util.*;
@@ -34,6 +36,17 @@ public class ProfileService {
         try {
             Patient patient = DB_Patient.getPatientById(patientID);
             return patient;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    //Returns a Patient given a doctorID
+    public Doctor doctorInfo(int doctorID){
+        try {
+            Doctor doctor = DB_Doctor.getDoctorById(doctorID);
+            return doctor;
         } catch (Exception e) {
             System.out.println(e);
             return null;

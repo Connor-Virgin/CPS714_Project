@@ -39,11 +39,102 @@
     <h2>
       Welcome Back, <span th:text="${sessionUser.firstname}">firstname</span> !
     </h2>
-    <center>
-      <img th:src="@{/img/H.png}" style="width:150px;height:150px;" alt="Hospital Logo">
-    </center>
+    <br>
+    <div th:if="${doctor}" class="container">
+      <div class="card">
+        <div class="card-header">
+          Appointment Info
+        </div>
+        <div class="card-body">
+          <h5 class="card-title" th:text="${doctor.getFirstName()} + ' ' + ${doctor.getLastName()}"></h5>
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <div class="card-header">
+                  Doctor Information
+                </div>
+                <div class="card-body">
+                  <table class="table table-striped">
+                    <tr>
+                      <td>Account Type:</td>
+                      <td>
+                        <span th:switch="${doctor.getRole()}">
+                          <span th:case="'1'">Admin</span>
+                          <span th:case="'2'">Doctor</span>
+                          <span th:case="'3'">Patient</span>
+                          <span th:case="'4'">Nurse</span>
+                          <span th:case="*">?</span>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>First Name:</td>
+                      <td> <span th:text="${doctor.getFirstName()}">firstname</span> </td>
+                    </tr>
+                    <tr>
+                      <td>Last Name:</td>
+                      <td> <span th:text="${doctor.getLastName()}">lastname</span> </td>
+                    </tr>
+                    <tr>
+                      <td>Email Address:</td>
+                      <td><a th:href="'mailto:' +  ${doctor.getEmail()}"> <span
+                            th:text="${doctor.getEmail()}">email</span> </a></td>
+                    </tr>
+                    <tr>
+                      <td>Office Telephone:</td>
+                      <td> <span th:text="${doctor.getTelephone()}">telephone</span> </td>
+                    </tr>
+                    <tr>
+                      <td>Office Address:</td>
+                      <td> <span th:text="${doctor.getAddress()}">address</span> </td>
+                    </tr>
+                    <tr>
+                      <td>Status:</td>
+                      <td>
+                        <span th:switch="${doctor.getStatus()}">
+                          <span th:case="'1'">Staff</span>
+                          <span th:case="'2'">Inpatient</span>
+                          <span th:case="'3'">Outpatient</span>
+                          <span th:case="*">?</span>
+                        </span>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
 
-    <div class="container">
+            <div class="col">
+              <div class="card">
+                <div class="card-header">
+                  Appointment Information
+                </div>
+                <div class="card-body">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <a th:href="'mailto:' +  ${doctor.getEmail()}" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-at"
+              viewBox="0 0 16 16">
+              <path
+                d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z">
+              </path>
+              <path
+                d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z">
+              </path>
+            </svg>
+            Contact
+          </a>
+        </div>
+        <a th:href="@{/profile/}" class="btn btn-danger">Back</a>
+      </div>
+    </div>
+    </div>
+
+    <div th:if="${appointments}" class="container">
       <h2 class="text-center"> Patient Profile </h2>
       <div class="row">
         <div class="col">
@@ -137,114 +228,44 @@
           </div>
         </div>
       </div>
-    </div>
-    <br>
+      <br>
+      <h2 class="text-center"> Booked Appointments </h2>
+      <table class="table table-striped table-bordered" th:if="${appointments}">
+        <thead class="table-dark">
+          <tr>
+            <th> Appointment ID </th>
+            <th> Doctor ID </th>
+            <th> Patient ID </th>
+            <th> Date </th>
+            <th> Actions </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="appointment : ${appointments}">
+            <td th:text="${appointment.getAppointmentId()}"></td>
+            <td th:text="${appointment.getDoctorId()}"></td>
+            <td th:text="${appointment.getPatientId()}"></td>
+            <td th:text="${#calendars.format(appointment.getAppointmentStart())}"></td>
+            <td>
+              <a th:href="@{/doctorInfo/{id}(id=${appointment.getDoctorId()})}" class="btn btn-primary">Info</a>
 
-    <style>
-      * {
-        box-sizing: border-box
-      }
-
-      body {
-        font-family: "Lato", sans-serif;
-      }
-
-      /* Style the tab */
-      .tab {
-        float: left;
-        border: 1px solid #ccc;
-        background-color: #f1f1f1;
-        width: 30%;
-        height: 300px;
-      }
-
-      /* Style the buttons inside the tab */
-      .tab button {
-        display: block;
-        background-color: inherit;
-        color: black;
-        padding: 22px 16px;
-        width: 100%;
-        border: none;
-        outline: none;
-        text-align: left;
-        cursor: pointer;
-        transition: 0.3s;
-        font-size: 17px;
-      }
-
-      /* Change background color of buttons on hover */
-      .tab button:hover {
-        background-color: #ddd;
-      }
-
-      /* Create an active/current "tab button" class */
-      .tab button.active {
-        background-color: #ccc;
-      }
-
-      /* Style the tab content */
-      .tabcontent {
-        float: left;
-        padding: 0px 12px;
-        border: 1px solid #ccc;
-        width: 70%;
-        border-left: none;
-        height: 300px;
-      }
-    </style>
-    </head>
-
-    <body>
-
-      <h2>Your Current Apppointments:</h2>
-
-      <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'monday')" id="defaultOpen">11/07/22</button>
-        <button class="tablinks" onclick="openCity(event, 'tuesday')">11/07/23</button>
-        <button class="tablinks" onclick="openCity(event, 'wednesday')">11/07/24</button>
-      </div>
-
-      <div id="monday" class="tabcontent">
-        <h3>Monday</h3>
-        <p>Appointment with Dr.Ajay</p>
-      </div>
-
-      <div id="tuesday" class="tabcontent">
-        <h3>Tuesday</h3>
-        <p>Appointment with Dr.Dhawan</p>
-      </div>
-
-      <div id="wednesday" class="tabcontent">
-        <h3>Wednesday</h3>
-        <p>Appointment with Dr.Ceamorebuts</p>
-      </div>
-
-      <script>
-        function openCity(evt, cityName) {
-          var i, tabcontent, tablinks;
-          tabcontent = document.getElementsByClassName("tabcontent");
-          for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-          }
-          tablinks = document.getElementsByClassName("tablinks");
-          for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-          }
-          document.getElementById(cityName).style.display = "block";
-          evt.currentTarget.className += " active";
-        }
-
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen").click();
-      </script>
-
+              <a th:href="@{/deleteAppointsPatient/{id}(id=${appointment.getAppointmentId()})}"
+                class="btn btn-danger">Cancel</a>
+            </td>
+          </tr>
+          <tr th:if="${appointments.isEmpty()}">
+            <td class="text-center" colspan="4">No Appointments on Record</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
       <form th:action="@{/main}" th:method="get">
         <p>
           Book an Appointment?
           <button type="submit" class="btn btn-secondary">Booking</button>
         </p>
       </form>
-    </body>
+    </div>
+  </body>
 
 </html>

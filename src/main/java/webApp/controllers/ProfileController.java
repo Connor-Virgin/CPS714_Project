@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import objects.Appointment;
+import objects.Doctor;
 import objects.Patient;
 import webApp.models.Appt;
 import webApp.models.SessionUser;
@@ -59,6 +60,13 @@ public class ProfileController {
 	public String deleteAppt(@PathVariable int id) {
 		profileService.deleteAppt(id);
 		return "redirect:/profile";
+	}
+
+    @GetMapping("/doctorInfo/{id}")
+	public String doctorInfo(@PathVariable int id, Model model, SessionUser sessionUser) {
+		Doctor doctor = profileService.doctorInfo(id);
+        model.addAttribute("doctor", doctor);
+		return "profile";
 	}
 
 }

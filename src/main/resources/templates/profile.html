@@ -35,102 +35,110 @@
   </nav>
 
   <body>
-    <h1>
+    <br>
+    <h2>
       Welcome Back, <span th:text="${sessionUser.firstname}">firstname</span> !
-    </h1>
+    </h2>
     <center>
       <img th:src="@{/img/H.png}" style="width:150px;height:150px;" alt="Hospital Logo">
     </center>
 
-    <div class="card text-center">
+    <div class="container">
       <h2 class="text-center"> Patient Profile </h2>
-      <div class="card-body">
-        <div class="row text-center">
-          <div class="col">
-            <table>
-              <tr>
-                <td class="text-center" colspan="2">Account Information</td>
-              </tr>
-              <tr>
-                <td>Account Type:</td>
-                <td>
-                  <p th:switch="${patient.getRole()}">
-                    <span th:case="'1'">Admin</span>
-                    <span th:case="'2'">Doctor</span>
-                    <span th:case="'3'">Patient</span>
-                    <span th:case="'4'">Nurse</span>
-                    <span th:case="*">?</span>
-                  </p>
-                </td>
-              </tr>
-              <tr>
-                <td>First Name:</td>
-                <td> <span th:text="${patient.getFirstName()}">firstname</span> </td>
-              </tr>
-              <tr>
-                <td>Last Name:</td>
-                <td> <span th:text="${patient.getLastName()}">lastname</span> </td>
-              </tr>
-              <tr>
-                <td>Email Address:</td>
-                <td> <span th:text="${patient.getEmail()}">email</span> </td>
-              </tr>
-              <tr>
-                <td>Telephone:</td>
-                <td> <span th:text="${patient.getTelephone()}">telephone</span> </td>
-              </tr>
-              <tr>
-                <td>Address:</td>
-                <td> <span th:text="${patient.getAddress()}">address</span> </td>
-              </tr>
-              <tr>
-                <td>Status:</td>
-                <td>
-                  <p th:switch="${patient.getStatus()}">
-                    <span th:case="'1'">Staff</span>
-                    <span th:case="'2'">Inpatient</span>
-                    <span th:case="'3'">Outpatient</span>
-                    <span th:case="*">?</span>
-                  </p>
-                </td>
-              </tr>
-            </table>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              Account Information
+            </div>
+            <div class="card-body">
+              <table class="table table-striped">
+                <!-- <tr>
+                  <td>Account Type:</td>
+                  <td>
+                    <span th:switch="${patient.getRole()}">
+                      <span th:case="'1'">Admin</span>
+                      <span th:case="'2'">Doctor</span>
+                      <span th:case="'3'">Patient</span>
+                      <span th:case="'4'">Nurse</span>
+                      <span th:case="*">?</span>
+                    </span>
+                  </td>
+                </tr> -->
+                <tr>
+                  <td>First Name:</td>
+                  <td> <span th:text="${patient.getFirstName()}">firstname</span> </td>
+                </tr>
+                <tr>
+                  <td>Last Name:</td>
+                  <td> <span th:text="${patient.getLastName()}">lastname</span> </td>
+                </tr>
+                <tr>
+                  <td>Email Address:</td>
+                  <td> <span th:text="${patient.getEmail()}">email</span> </td>
+                </tr>
+                <tr>
+                  <td>Telephone:</td>
+                  <td> <span th:text="${patient.getTelephone()}">telephone</span> </td>
+                </tr>
+                <tr>
+                  <td>Address:</td>
+                  <td> <span th:text="${patient.getAddress()}">address</span> </td>
+                </tr>
+                <tr>
+                  <td>Status:</td>
+                  <td>
+                    <span th:switch="${patient.getStatus()}">
+                      <span th:case="'1'">Staff</span>
+                      <span th:case="'2'">Inpatient</span>
+                      <span th:case="'3'">Outpatient</span>
+                      <span th:case="*">?</span>
+                    </span>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
-          <div class="col">
-            <table>
-              <tr>
-                <td class="text-center" colspan="2">Patient Information</td>
-              </tr>
-              <tr>
-                <td>Healthcard:</td>
-                <td> <span th:text="${patient.getHealthCard()}">healthcard</span> </td>
-              </tr>
-              <tr>
-                <td>Birth Date:</td>
-                <td th:text="${#calendars.format(patient.getBirthdate())}">birthdate</td>
-              </tr>
-              <tr>
-                <td>Age:</td>
-                <td> <span th:text="${patient.getAge()}">age</span> </td>
-              </tr>
-              <tr>
-                <td>Gender:</td>
-                <td> <span th:text="${patient.getGender()}">gender</span> </td>
-              </tr>
-              <tr>
-                <td>Height(cm):</td>
-                <td> <span th:text="${patient.getHeight()}">height_cm</span> </td>
-              </tr>
-              <tr>
-                <td>Weight(kg):</td>
-                <td> <span th:text="${patient.getWeight()}">weight_kg</span> </td>
-              </tr>
-            </table>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              Patient Information
+            </div>
+            <div class="card-body">
+              <table class="table table-striped">
+                <tr>
+                  <td>Healthcard:</td>
+                  <td> <span th:text="${patient.getHealthCard()}">healthcard</span> </td>
+                </tr>
+                <tr>
+                  <td>Birth Date:</td>
+                  <td th:text="${#calendars.format(patient.getBirthdate())}">birthdate</td>
+                </tr>
+                <tr>
+                  <td>Age:</td>
+                  <td> <span th:text="${patient.getAge()}">age</span> </td>
+                </tr>
+                <tr>
+                  <td>Gender:</td>
+                  <td> <span th:text="${patient.getGender()}">gender</span> </td>
+                </tr>
+                <tr>
+                  <td>Height(cm):</td>
+                  <td> <span th:text="${patient.getHeight()}">height_cm</span> </td>
+                </tr>
+                <tr>
+                  <td>Weight(kg):</td>
+                  <td> <span th:text="${patient.getWeight()}">weight_kg</span> </td>
+                </tr>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
+    <br>
 
     <style>
       * {

@@ -27,7 +27,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/login}">Logout</a>
+                    <a class="nav-link" th:href="@{/login}">Login</a>
                 </li>
             </ul>
         </div>
@@ -50,47 +50,47 @@ Displays div for doctor registraion of regRole = 2 -->
                 <table align="center">
                     <tr>
                         <td> Enter your First Name:</td>
-                        <td> <input th:field="*{firstname}" type="firstname" name="firstname" size="30"> </td>
+                        <td> <input th:field="*{firstname}" type="firstname" name="firstname" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter your Last Name:</td>
-                        <td> <input th:field="*{lastname}" type="lastname" name="lastname" size="30"> </td>
+                        <td> <input th:field="*{lastname}" type="lastname" name="lastname" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter your Address:</td>
-                        <td> <input th:field="*{address}" type="address" name="address" size="30"> </td>
+                        <td> <input th:field="*{address}" type="address" name="address" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter your Telephone Number:</td>
-                        <td> <input th:field="*{telephone}" type="tel" name="telephone" size="30"> </td>
+                        <td> <input th:field="*{telephone}" type="tel" name="telephone" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter email :</td>
-                        <td> <input th:field="*{email}" type="email" name="email" size="30"> </td>
+                        <td> <input th:field="*{email}" type="email" name="email" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter password :</td>
-                        <td> <input th:field="*{password}" type="password" name="password" size="30"> </td>
+                        <td> <input th:field="*{password}" type="password" name="password" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter Healthcard :</td>
-                        <td> <input th:field="*{health_card}" type="text" name="health_card" size="30"> </td>
+                        <td> <input th:field="*{health_card}" type="text" name="health_card" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter Birth Date :</td>
-                        <td> <input th:field="*{birthdate}" type="date" name="birthdate" size="30"> </td>
+                        <td> <input th:field="*{birthdate}" type="date" name="birthdate" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter Gender :</td>
-                        <td> <input th:field="*{gender}" type="text" name="gender" size="30"> </td>
+                        <td> <input th:field="*{gender}" type="text" name="gender" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter Height(cm) :</td>
-                        <td> <input th:field="*{height_cm}" type="number" name="height_cm" size="30"> </td>
+                        <td> <input th:field="*{height_cm}" type="number" name="height_cm" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter Weight(kg) :</td>
-                        <td> <input th:field="*{weight_kg}" type="number" name="weight_kg" size="30"> </td>
+                        <td> <input th:field="*{weight_kg}" type="number" name="weight_kg" size="30" required> </td>
                     </tr>
                 </table><!-- Navbar links -->
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -131,35 +131,35 @@ Displays div for doctor registraion of regRole = 2 -->
                 <table align="center">
                     <tr>
                         <td> Enter your First Name:</td>
-                        <td> <input th:field="*{firstname}" type="firstname" name="firstname" size="30"> </td>
+                        <td> <input th:field="*{firstname}" type="firstname" name="firstname" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter your Last Name:</td>
-                        <td> <input th:field="*{lastname}" type="lastname" name="lastname" size="30"> </td>
+                        <td> <input th:field="*{lastname}" type="lastname" name="lastname" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter your Address:</td>
-                        <td> <input th:field="*{address}" type="address" name="address" size="30"> </td>
+                        <td> <input th:field="*{address}" type="address" name="address" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter your Telephone Number:</td>
-                        <td> <input th:field="*{telephone}" type="tel" name="telephone" size="30"> </td>
+                        <td> <input th:field="*{telephone}" type="tel" name="telephone" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter email :</td>
-                        <td> <input th:field="*{email}" type="email" name="email" size="30"> </td>
+                        <td> <input th:field="*{email}" type="email" name="email" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter password :</td>
-                        <td> <input th:field="*{password}" type="password" name="password" size="30"> </td>
+                        <td> <input th:field="*{password}" type="password" name="password" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter Department :</td>
-                        <td> <input th:field="*{department}" type="text" name="department" size="30"> </td>
+                        <td> <input th:field="*{department}" type="text" name="department" size="30" required> </td>
                     </tr>
                     <tr>
                         <td> Enter Position :</td>
-                        <td> <input th:field="*{position}" type="text" name="position" size="30"> </td>
+                        <td> <input th:field="*{position}" type="text" name="position" size="30" required> </td>
                     </tr>
                 </table>
                 <br>

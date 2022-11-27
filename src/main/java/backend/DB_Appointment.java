@@ -1,6 +1,7 @@
 package backend;
 
 import java.util.Calendar;
+import java.util.stream.Collectors;
 import java.util.*;
 
 import objects.Appointment;
@@ -109,6 +110,12 @@ public class DB_Appointment {
         sql += "WHERE patient_id = " + patient_id + " AND appointment_datetime >= '" + SQLManager.CalToSQLDateTime(Calendar.getInstance()) + "'";
 
         return getAppointmentsList(sql);
+    }
+
+    public static List<String> getNotesByPatientId(int patient_id) {
+        List<Appointment> apps = getAppointmentsByPatientId(patient_id);
+        List<String> notes = apps.stream().map(app -> app.getDoctorNotes()).collect(Collectors.toList());
+        return notes;
     }
 
     // Helpers

@@ -9,6 +9,7 @@ public class Appointment {
     private int appointment_duration_min;
     private int doctor_id;
     private int patient_id;
+    private String doctor_notes;
 
     // Setter Classes
     public void setAppointmentId(int appointment_id) {
@@ -29,6 +30,10 @@ public class Appointment {
 
     public void setPatientId(int patient_id) {
         this.patient_id = patient_id;
+    }
+
+    public void setDoctorNotes(String notes) {
+        this.doctor_notes = notes;
     }
 
     // Getter Classes
@@ -58,21 +63,26 @@ public class Appointment {
         return patient_id;
     }
 
+    public String getDoctorNotes() {
+        return doctor_notes;
+    }
+
     // Constructor
     // For READ, UPDATE, DELETE existing appointment
     public Appointment(int appointment_id, Calendar appointment_datetime,
-            int doctor_id, int patient_id) {
+            int doctor_id, int patient_id, String doctor_notes) {
         this.appointment_id = appointment_id;
         this.appointment_datetime = appointment_datetime;
         this.appointment_duration_min = 30;
         this.doctor_id = doctor_id;
         this.patient_id = patient_id;
+        this.doctor_notes = doctor_notes;
     }
 
     // For INSERT new appointment
     public Appointment(Calendar appointment_datetime,
             int doctor_id, int patient_id) {
-        this(0, appointment_datetime, doctor_id, patient_id);
+        this(0, appointment_datetime, doctor_id, patient_id, "");
     }
 
     // Default Constructor

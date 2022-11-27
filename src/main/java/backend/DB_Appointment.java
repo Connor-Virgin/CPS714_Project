@@ -21,13 +21,15 @@ public class DB_Appointment {
             sql += "appointment_datetime, ";
             sql += "appointment_duration_min, ";
             sql += "patient_id, ";
-            sql += "doctor_id";
+            sql += "doctor_id,";
+            sql += "doctor_notes";
             sql += ")";
             sql += "VALUES (";
             sql += "'" + SQLManager.CalToSQLDateTime(app.getAppointmentStart()) + "',";
             sql += app.getAppointmentDuration() + ", ";
             sql += "'" + app.getPatientId() + "', ";
-            sql += "'" + app.getDoctorId()+ "'";
+            sql += "'" + app.getDoctorId()+ "', ";
+            sql += "'" + app.getDoctorNotes() + "'";
             sql += ")";
 
         }
@@ -37,7 +39,8 @@ public class DB_Appointment {
             sql += "appointment_datetime = '" + SQLManager.CalToSQLDateTime(app.getAppointmentStart()) + "', ";
             sql += "appointment_duration_min = " + app.getAppointmentDuration() + ", ";
             sql += "patient_id = " + app.getPatientId() + ", ";
-            sql += "doctor_id = " + app.getDoctorId() + " ";
+            sql += "doctor_id = " + app.getDoctorId() + ", ";
+            sql += "doctor_notes = " + app.getDoctorNotes() + " ";
             sql += "WHERE appointment_id = " + app.getAppointmentId();
 
         }
@@ -175,7 +178,8 @@ public class DB_Appointment {
         //int appointment_duration = (int) app_map.get("appointment_duration");
         int doctor_id = (int) app_map.get("doctor_id");
         int patient_id = (int) app_map.get("patient_id");
+        String doctor_notes = app_map.get("doctor_notes").toString();
 
-        return new Appointment(appointment_id, appointment_datetime, doctor_id, patient_id);
+        return new Appointment(appointment_id, appointment_datetime, doctor_id, patient_id, doctor_notes);
     }
 }

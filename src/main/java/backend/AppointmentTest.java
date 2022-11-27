@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import objects.Appointment;
 
 public class AppointmentTest {
@@ -18,7 +17,6 @@ public class AppointmentTest {
             cal.setTime(date);
 
         Appointment appointment = new Appointment(cal,4,2);
-        Appointment a = DB_Appointment.createUpdateUser(appointment);
 
         /* List<Appointment> ls = DB_Appointment.getAppointmentsByDoctorId(1);
         Appointment app = ls.get(0);

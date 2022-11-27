@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import objects.Appointment;
 import objects.Patient;
 import objects.User;
 
@@ -113,6 +115,12 @@ public class DB_Patient {
         sql = "SELECT * FROM " + PATIENT_VIEW;
 
         return getPatientsList(sql);
+    }
+
+    public static List<String> getNotesByPatientId(int patient_id) {
+        List<Appointment> apps = DB_Appointment.getAppointmentsByPatientId(patient_id);
+        List<String> notes = apps.stream().map(app -> app.getDoctorNotes()).collect(Collectors.toList());
+        return notes;
     }
 
     //Helper functions

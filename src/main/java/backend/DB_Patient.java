@@ -1,10 +1,12 @@
 package backend;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import objects.Appointment;
 import objects.Patient;
@@ -141,11 +143,21 @@ public class DB_Patient {
         return getPatientsList(sql);
     }
 
-    public static List<String> getNotesByPatientId(int patient_id) {
-        List<Appointment> apps = DB_Appointment.getAppointmentsByPatientId(patient_id);
-        List<String> notes = apps.stream().map(app -> app.getDoctorNotes()).collect(Collectors.toList());
-        return notes;
+    public static List<Integer> getAvailableRoomsByWard(int ward) {
+        String sql;
+
+        sql = "SELECT * FROM " + PATIENT_VIEW + " ";
+        sql += "WHERE ward = " + ward;
+
+        List<Patient> patients = getPatientsList(sql);
+        List<Integer> occupied = patients.stream().map(patient -> patient.getRoom()).collect(Collectors.toList());
+        List<Integer> available = IntStream.range(1, 50).boxed().collect(Collectors.toList());
+
+        available.removeAll(occupied);
+        return available;
     }
+
+    
 
     //Helper functions
     private static List<Patient> getPatientsList(String sql) {

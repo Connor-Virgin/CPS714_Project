@@ -10,6 +10,8 @@ public class Patient extends User {
     private String gender;
     private int height_cm;
     private int weight_lbs;
+    private int ward;
+    private int room;
 
     // Setter Classes
     public void setHealthCard(String healthCard) {
@@ -30,6 +32,14 @@ public class Patient extends User {
 
     public void setWeight(int weight_lbs) {
         this.weight_lbs = weight_lbs;
+    }
+
+    public void setWard(int ward) {
+        this.ward = ward;
+    }
+
+    public void setRoom(int room) {
+        this.room = room;
     }
 
     // Getter Classes
@@ -72,11 +82,19 @@ public class Patient extends User {
         return weight_lbs;
     }
 
+    public int getWard() {
+        return ward;
+    }
+
+    public int getRoom() {
+        return room;
+    }
+
     // Constructor
     // For read, update, delete patient+user
     public Patient(int patient_id, int user_id, String user_name, String first_name, String last_name,
             String health_card, String email, String address, String telephone, Calendar birthdate, String gender,
-            int height_cm, int weight_lbs, int role, int status, String password) {
+            int height_cm, int weight_lbs, int role, int status, int ward, int room, String password) {
         super(user_id, user_name, first_name, last_name, email, address, telephone, role, status, password);
 
         this.patient_id = patient_id;
@@ -85,16 +103,18 @@ public class Patient extends User {
         this.gender = gender;
         this.height_cm = height_cm;
         this.weight_lbs = weight_lbs;
+        this.ward = ward;
+        this.room = room;
 
     }
 
     // For INSERT new patient+user
     public Patient(String user_name, String first_name, String last_name, String health_card, String email,
             String address, String telephone, Calendar birthdate, String gender, int height_cm,
-            int weight_lbs, int role, int status, String password) {
+            int weight_lbs, int role, int status, int ward, int room, String password) {
         this(0, 0, user_name, first_name, last_name, health_card, email, address,
                 telephone, birthdate, gender, height_cm,
-                weight_lbs, role, status, password);
+                weight_lbs, role, status, ward, room, password);
 
     }
 

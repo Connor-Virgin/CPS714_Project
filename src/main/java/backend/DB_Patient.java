@@ -32,7 +32,9 @@ public class DB_Patient {
                 sql += "birthdate, ";
                 sql += "gender, ";
                 sql += "height_cm, ";
-                sql += "weight_lbs";
+                sql += "weight_lbs, ";
+                sql += "ward, ";
+                sql += "room";
                 sql += ")";
                 sql += "VALUES (";
                 sql += user.getUserId() + ", ";
@@ -40,7 +42,9 @@ public class DB_Patient {
                 sql += "'" + new java.sql.Date(patient.getBirthdate().getTimeInMillis()) + "', ";
                 sql += "'" + patient.getGender() + "', ";
                 sql += patient.getHeight() + ", ";
-                sql += patient.getWeight();
+                sql += patient.getWeight() + ", ";
+                sql += patient.getWard() + ", ";
+                sql += patient.getRoom();
                 sql += ")";
 
             }
@@ -51,7 +55,9 @@ public class DB_Patient {
                 sql += "birthdate = '" + new java.sql.Date(patient.getBirthdate().getTimeInMillis()) + "', ";
                 sql += "gender = '" + patient.getGender() + "', ";
                 sql += "height_cm = " + patient.getHeight() + ", ";
-                sql += "weight_lbs = " + patient.getWeight() + " ";
+                sql += "weight_lbs = " + patient.getWeight() + ", ";
+                sql += "ward = " + patient.getWard() + ", ";
+                sql += "room = " + patient.getRoom() + " ";
                 sql += "WHERE patient_id = " + patient.getPatientId();
 
             }
@@ -109,10 +115,28 @@ public class DB_Patient {
         return getPatient(sql);
     }
 
+    public static Patient getPatientByWardRoom(int ward, int room) {
+        String sql;
+
+        sql = "SELECT * FROM " + PATIENT_VIEW + " ";
+        sql += "WHERE ward = " + ward + " AND room = " + room;
+
+        return getPatient(sql);
+    }
+
     public static List<Patient> getAllPatients() {
         String sql;
 
         sql = "SELECT * FROM " + PATIENT_VIEW;
+
+        return getPatientsList(sql);
+    }
+
+    public static List<Patient> getPatientsByWard(int ward) {
+        String sql;
+
+        sql = "SELECT * FROM " + PATIENT_VIEW + " ";
+        sql += "WHERE ward = " + ward;
 
         return getPatientsList(sql);
     }
@@ -167,9 +191,11 @@ public class DB_Patient {
         String telephone = patient_map.get("telephone").toString();
         int role = (int) patient_map.get("role");
         int status = (int) patient_map.get("status");
+        int ward = (int) patient_map.get("ward");
+        int room = (int) patient_map.get("room");
         String password = patient_map.get("password").toString();
 
         return new Patient(patient_id, user_id, user_name, first_name, last_name, health_card, email, address,
-                telephone, birthdate, gender, height_cm, weight_lbs, role, status, password);
+                telephone, birthdate, gender, height_cm, weight_lbs, role, status, ward, room, password);
     }
 }

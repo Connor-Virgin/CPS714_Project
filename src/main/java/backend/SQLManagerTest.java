@@ -14,7 +14,7 @@ public class SQLManagerTest {
         System.out.println("-----------\nNEW RECORD\n----------");
         Patient tester = new Patient("TESTER", "TEST", "PATIENT", "123456789AA", "test@hospitalerp.com",
                 "245 Church Street","+1(416)123-4567", SQLManager.SQLDateTimeToCal("1990-01-01 00:00:00"), "MALE", 190,
-                175, 3, 2, "pass");
+                175, 3, 2, 1, 1, "pass");
 
         tester = DB_Patient.createUpdatePatient(tester);
         test();

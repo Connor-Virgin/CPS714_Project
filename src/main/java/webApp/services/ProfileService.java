@@ -31,10 +31,10 @@ public class ProfileService {
         }
     }
 
-    //Returns a Patient given a patientID
-    public Patient patientInfo(int patientID){
+    //Returns a Patient given a userID
+    public Patient patientInfo(int userID){
         try {
-            Patient patient = DB_Patient.getPatientById(patientID);
+            Patient patient = DB_Patient.getPatientByUserId(userID);
             return patient;
         } catch (Exception e) {
             System.out.println(e);
@@ -47,6 +47,17 @@ public class ProfileService {
         try {
             Doctor doctor = DB_Doctor.getDoctorById(doctorID);
             return doctor;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    //Returns a Patient given a doctorID
+    public Appointment appointInfo(int appointID){
+        try {
+            Appointment appointment = DB_Appointment.getAppointmentByID(appointID);
+            return appointment;
         } catch (Exception e) {
             System.out.println(e);
             return null;

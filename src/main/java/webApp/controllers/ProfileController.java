@@ -62,10 +62,14 @@ public class ProfileController {
 		return "redirect:/profile";
 	}
 
-    @GetMapping("/doctorInfo/{id}")
-	public String doctorInfo(@PathVariable int id, Model model, SessionUser sessionUser) {
+    @GetMapping("/doctorInfo/{id}/appointInfo/{app}")
+	public String doctorInfo(@PathVariable int id, @PathVariable int app, Model model, SessionUser sessionUser) {
 		Doctor doctor = profileService.doctorInfo(id);
+        Appointment appointment = profileService.appointInfo(app);
+
+        model.addAttribute("appoint", appointment);
         model.addAttribute("doctor", doctor);
+        
 		return "profile";
 	}
 

@@ -82,7 +82,7 @@ public class Appointment {
     // For INSERT new appointment
     public Appointment(Calendar appointment_datetime,
             int doctor_id, int patient_id) {
-        this(0, appointment_datetime, doctor_id, patient_id, "");
+        this(0, appointment_datetime, doctor_id, patient_id, "Notes: ");
     }
 
     // Default Constructor

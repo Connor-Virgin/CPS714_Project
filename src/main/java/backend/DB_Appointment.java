@@ -112,6 +112,15 @@ public class DB_Appointment {
         return getAppointmentsList(sql);
     }
 
+    public static Appointment getAppointmentByID(int appointment_id) {
+        String sql;
+
+        sql = "SELECT * FROM " + APPOINTMENT_TABLE + " ";
+        sql += "WHERE appointment_id = " + appointment_id + "";
+
+        return getAppointment(sql);
+    }
+
     public static List<String> getNotesByPatientId(int patient_id) {
         List<Appointment> apps = getAppointmentsByPatientId(patient_id);
         List<String> notes = apps.stream().map(app -> app.getDoctorNotes()).collect(Collectors.toList());

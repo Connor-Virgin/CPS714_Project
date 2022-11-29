@@ -43,7 +43,7 @@ public class RegService {
             //Create new patient object
             Patient patient = new Patient(reg.getEmail(), reg.getFirstname(), reg.getLastname(), reg.getHealth_card(), reg.getEmail(), reg.getAddress(),
             reg.getTelephone(), cal, reg.getGender(), Integer.parseInt(reg.getHeight_cm()), Integer.parseInt(reg.getweight_kg()),
-            Role.Patient.Id, Status.Outpatient.Id, reg.getPassword());
+            Role.Patient.Id, Status.Outpatient.Id, 0, 0, reg.getPassword());
 
             //add to database
             DB_Patient.createUpdatePatient(patient);

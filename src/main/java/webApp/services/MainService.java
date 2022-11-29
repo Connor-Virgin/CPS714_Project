@@ -39,6 +39,7 @@ public class MainService {
             return appointments;
         }
         catch (Exception e) {
+            System.out.println("Exception while checking available appointments");
             System.out.println(e);
             return null;
         }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DoctorService {
 
-    //Returns list of appointments given a doctor's userID
+    // Returns list of appointments given a doctor's userID
     public List<Appointment> getDoctorAppoints(int userID) {
 
         try {
@@ -24,15 +24,14 @@ public class DoctorService {
                 return null;
             }
             return list;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
             return null;
         }
     }
 
-    //Returns a Patient given a patientID
-    public Patient patientInfo(int patientID){
+    // Returns a Patient given a patientID
+    public Patient patientInfo(int patientID) {
         try {
             Patient patient = DB_Patient.getPatientById(patientID);
             return patient;
@@ -42,21 +41,23 @@ public class DoctorService {
         }
     }
 
-        //Returns a Patient given a doctorID
-        public Appointment appointInfo(int appointID){
-            try {
-                Appointment appointment = DB_Appointment.getAppointmentByID(appointID);
-                return appointment;
-            } catch (Exception e) {
-                System.out.println(e);
-                return null;
-            }
+    // Returns a Patient given a doctorID
+    public Appointment appointInfo(int appointID) {
+        try {
+            Appointment appointment = DB_Appointment.getAppointmentByID(appointID);
+            return appointment;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
         }
+    }
 
-    //Populates List of doctors to display
-    public List<Doctor> getAllDoctors(){
+    //Updates exsisting Appointment given an Appointment
+
+    // Populates List of doctors to display
+    public List<Doctor> getAllDoctors() {
         List<Doctor> list = DB_Doctor.getAllDoctors();
         return list;
     }
-    
+
 }

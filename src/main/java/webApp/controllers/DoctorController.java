@@ -46,9 +46,19 @@ public class DoctorController {
         return "doctor";
      }
 
-    @GetMapping("/patientInfo/{id}")
+    /* @GetMapping("/patientInfo/{id}")
 	public String patientInfo(@PathVariable int id, Model model, SessionUser sessionUser) {
 		Patient patient = doctorService.patientInfo(id);
+        model.addAttribute("patient", patient);
+		return "doctor";
+	} */
+
+    @GetMapping("/patientInfo/{id}/appointInfo/{app}")
+	public String patientInfo(@PathVariable int id, @PathVariable int app, Model model, SessionUser sessionUser) {
+        Patient patient = doctorService.patientInfo(id);
+        Appointment appointment = doctorService.appointInfo(app);
+        
+        model.addAttribute("appoint", appointment);
         model.addAttribute("patient", patient);
 		return "doctor";
 	}

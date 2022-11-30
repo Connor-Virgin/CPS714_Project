@@ -145,6 +145,22 @@
                     </div>
                 </div>
                 <br>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                Appointment Notes
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                        th:text="${appoint.getDoctorNotes()}">Test Appointment Note</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
                 <a th:href="'mailto:' +  ${patient.getEmail()}" class="btn btn-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-envelope-at" viewBox="0 0 16 16">
@@ -179,8 +195,11 @@
                     <td th:text="${appointment.getPatientId()}"></td>
                     <td th:text="${#calendars.format(appointment.getAppointmentStart())}"></td>
                     <td>
-                        <a th:href="@{/patientInfo/{id}(id=${appointment.getPatientId()})}"
-                            class="btn btn-primary">Paitent Info</a>
+                        <!-- <a th:href="@{/patientInfo/{id}(id=${appointment.getPatientId()})}"
+                            class="btn btn-primary">Paitent Info</a> -->
+
+                        <a th:href="@{/patientInfo/{id}/appointInfo/{app}(id=${appointment.getPatientId()}, app=${appointment.getAppointmentId()})}"
+                            class="btn btn-primary">Info</a>
 
                         <!-- <a th:href="@{/deleteAppointsAdmin/{id}(id=${appointment.getAppointmentId()})}"
                                 class="btn btn-danger">Delete</a> -->

@@ -42,6 +42,17 @@ public class DoctorService {
         }
     }
 
+        //Returns a Patient given a doctorID
+        public Appointment appointInfo(int appointID){
+            try {
+                Appointment appointment = DB_Appointment.getAppointmentByID(appointID);
+                return appointment;
+            } catch (Exception e) {
+                System.out.println(e);
+                return null;
+            }
+        }
+
     //Populates List of doctors to display
     public List<Doctor> getAllDoctors(){
         List<Doctor> list = DB_Doctor.getAllDoctors();

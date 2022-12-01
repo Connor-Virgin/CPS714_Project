@@ -1,7 +1,8 @@
 package webApp.models;
 
+/* Unused */
 public class EditAppt {
-    private int appointment_id;
+    /* private int appointment_id;
     private String doctor_notes;
 
     public int getAppointment_id() {
@@ -23,5 +24,5 @@ public class EditAppt {
     public EditAppt(int appointment_id, String doctor_notes) {
         this.appointment_id = 0;
         this.doctor_notes = doctor_notes;
-    }
+    } */
 }

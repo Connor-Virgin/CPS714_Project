@@ -189,8 +189,9 @@
             <a th:href="@{/doctor/}" class="btn btn-danger">Back</a>
         </div>
     </div>
-    <div class="container text-center">
-        <table th:if="${appointments}" class="table table-striped table-bordered">
+    <div th:if="${appointments}" class="container text-center">
+        <h2>Appointments</h2>
+        <table class="table table-striped table-bordered">
             <thead class="table-dark">
                 <tr>
                     <th> Appointment ID </th>

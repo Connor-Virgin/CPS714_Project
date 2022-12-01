@@ -37,6 +37,11 @@ public class LoginController {
         this.loginservice = loginservice;
     }
 
+    @GetMapping("/")
+    public String start() {
+        return "redirect:/login";
+    }
+
     //Deals with the HTML get request '/login'
     @GetMapping("/login")
 	public String login(Model model, Login login) {

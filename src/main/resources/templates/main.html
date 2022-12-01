@@ -38,7 +38,7 @@
   </h1>
   <div class="container text-center">
     <h2>
-      Welcome <span th:text="${sessionUser.firstname}">firstname</span>!
+      Welcome Back, <span th:text="${sessionUser.firstname} + ' ' + ${sessionUser.lastname}">firstname lastname</span> !
     </h2>
     <br>
     <br>

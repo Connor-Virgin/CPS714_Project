@@ -12,12 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import objects.Appointment;
-import objects.Doctor;
 import objects.Patient;
-import webApp.models.Appt;
 import webApp.models.SessionUser;
-import webApp.models.DisplayAppoint;
-import webApp.models.EditAppt;
 import webApp.services.DoctorService;
 
 @Controller

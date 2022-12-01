@@ -92,17 +92,6 @@
                                         <td>Address:</td>
                                         <td> <span th:text="${patient.getAddress()}">address</span> </td>
                                     </tr>
-                                    <tr>
-                                        <td>Status:</td>
-                                        <td>
-                                            <span th:switch="${patient.getStatus()}">
-                                                <span th:case="'1'">Staff</span>
-                                                <span th:case="'2'">Inpatient</span>
-                                                <span th:case="'3'">Outpatient</span>
-                                                <span th:case="*">?</span>
-                                            </span>
-                                        </td>
-                                    </tr>
                                 </table>
                                 <a th:href="'mailto:' +  ${patient.getEmail()}" class="btn btn-primary">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -118,6 +107,14 @@
                                 </a>
                             </div>
                         </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-header">
+                              Date Information
+                            </div>
+                            <div class="card-body" th:text="${#calendars.format(appoint.getAppointmentStart())}">
+                            </div>
+                          </div>
                     </div>
 
                     <div class="col">
@@ -150,6 +147,17 @@
                                     <tr>
                                         <td>Weight(kg):</td>
                                         <td> <span th:text="${patient.getWeight()}">weight_kg</span> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status:</td>
+                                        <td>
+                                            <span th:switch="${patient.getStatus()}">
+                                                <span th:case="'1'">Staff</span>
+                                                <span th:case="'2'">Inpatient</span>
+                                                <span th:case="'3'">Outpatient</span>
+                                                <span th:case="*">?</span>
+                                            </span>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Hospital Ward:</td>

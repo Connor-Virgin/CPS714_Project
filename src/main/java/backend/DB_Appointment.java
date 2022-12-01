@@ -41,7 +41,7 @@ public class DB_Appointment {
             sql += "appointment_duration_min = " + app.getAppointmentDuration() + ", ";
             sql += "patient_id = " + app.getPatientId() + ", ";
             sql += "doctor_id = " + app.getDoctorId() + ", ";
-            sql += "doctor_notes = " + app.getDoctorNotes() + " ";
+            sql += "doctor_notes = '" + app.getDoctorNotes() + "' ";
             sql += "WHERE appointment_id = " + app.getAppointmentId();
 
         }

@@ -18,7 +18,7 @@ public class DoctorService {
 
         try {
             Doctor doctor = DB_Doctor.getDoctorByUserId(userID);
-            System.out.println(doctor.getDoctorId());
+            // System.out.println(doctor.getDoctorId());
             List<Appointment> list = DB_Appointment.getAppointmentsByDoctorId(doctor.getDoctorId());
             if (list == null) {
                 return null;
@@ -52,7 +52,19 @@ public class DoctorService {
         }
     }
 
-    //Updates exsisting Appointment given an Appointment
+    // Updates exsisting Appointment given an Appointment
+    public boolean updateNotes(int appointID, String docNotes) {
+        try {
+            Appointment appointment = DB_Appointment.getAppointmentByID(appointID);
+            appointment.setDoctorNotes(docNotes);
+            DB_Appointment.createUpdateUser(appointment);
+            return true;
+          
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
 
     // Populates List of doctors to display
     public List<Doctor> getAllDoctors() {

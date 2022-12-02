@@ -1,7 +1,8 @@
 package webApp.models;
 
+/* Unused */
 public class DisplayAppoint{
-    private int appointment_id;
+    /* private int appointment_id;
     private String appointment_datetime;
     private int doctor_id;
     private int patient_id;
@@ -20,6 +21,6 @@ public class DisplayAppoint{
 
     public DisplayAppoint(){
         this.appointment_id = 0;
-    }
+    } */
 
 }

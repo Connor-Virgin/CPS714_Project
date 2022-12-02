@@ -50,9 +50,20 @@ public class MainService {
 
             //Parse string into calendar object
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
             Date date = sdf.parse(appt.getApp_datetime());
+            Date currentDate = new Date(System.currentTimeMillis());
+            System.out.println(sdf.format(currentDate));
+
+            Calendar currentCal = Calendar.getInstance();
             Calendar cal = Calendar.getInstance();
+
+            currentCal.setTime(currentDate);
             cal.setTime(date);
+
+            if(cal.before(currentCal)){
+                return false;
+            }
 
             Patient patient = DB_Patient.getPatientByUserId(appt.getPatient_id());
 

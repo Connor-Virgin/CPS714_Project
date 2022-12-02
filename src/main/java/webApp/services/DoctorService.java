@@ -13,26 +13,25 @@ import org.springframework.stereotype.Service;
 @Service
 public class DoctorService {
 
-    //Returns list of appointments given a doctor's userID
+    // Returns list of appointments given a doctor's userID
     public List<Appointment> getDoctorAppoints(int userID) {
 
         try {
             Doctor doctor = DB_Doctor.getDoctorByUserId(userID);
-            System.out.println(doctor.getDoctorId());
+            // System.out.println(doctor.getDoctorId());
             List<Appointment> list = DB_Appointment.getAppointmentsByDoctorId(doctor.getDoctorId());
             if (list == null) {
                 return null;
             }
             return list;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
             return null;
         }
     }
 
-    //Returns a Patient given a patientID
-    public Patient patientInfo(int patientID){
+    // Returns a Patient given a patientID
+    public Patient patientInfo(int patientID) {
         try {
             Patient patient = DB_Patient.getPatientById(patientID);
             return patient;
@@ -42,10 +41,35 @@ public class DoctorService {
         }
     }
 
-    //Populates List of doctors to display
-    public List<Doctor> getAllDoctors(){
+    // Returns a Patient given a doctorID
+    public Appointment appointInfo(int appointID) {
+        try {
+            Appointment appointment = DB_Appointment.getAppointmentByID(appointID);
+            return appointment;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    // Updates exsisting Appointment given an Appointment
+    public boolean updateNotes(int appointID, String docNotes) {
+        try {
+            Appointment appointment = DB_Appointment.getAppointmentByID(appointID);
+            appointment.setDoctorNotes(docNotes);
+            DB_Appointment.createUpdateUser(appointment);
+            return true;
+          
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    // Populates List of doctors to display
+    public List<Doctor> getAllDoctors() {
         List<Doctor> list = DB_Doctor.getAllDoctors();
         return list;
     }
-    
+
 }

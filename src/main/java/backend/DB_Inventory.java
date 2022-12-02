@@ -71,7 +71,7 @@ public class DB_Inventory {
         String sql;
 
         sql = "SELECT * FROM " + INVENTORY_TABLE + " ";
-        sql += "WHERE item_name = " + item_name;
+        sql += "WHERE item_name = '" + item_name + "'";
 
         return getItem(sql);
     }

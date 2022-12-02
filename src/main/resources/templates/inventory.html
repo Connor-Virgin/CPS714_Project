@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">    
+
+<head>
+<title> Inventory </title>
+    <link rel="stylesheet" th:href= "@{/css/style.css}"/>
+</head> 
+
+    <h1 style="color:White;font-family:verdana;font-size:36px;text-align: center;background-color:#7289da">
+
+        Inventory
+
+    </h1>
+    <center>
+        <img th:src="@{/img/H.png}" style= "width:150px;height:150px;" alt= "Hospital Logo">
+    </center>
+
+    <form th:object="${item}" th:action="@{/inventory}" th:method="get">
+        <table border="2" align="center" cellpadding="5" cellspacing="5">
+            <tr>
+                <th> Item </th>
+                <th> Quantity </th>
+            </tr>
+            <tr th:each= "item: ${allItems}">
+                <td th:text = "${item.getItemName()}">
+                <td th:text = "${item.getQuantity()}">
+            </tr>
+        </table>
+</form>
+
+<form th:object="${item}" th:action="@{/editquantity}" th:method="post">
+        <label>Select An Item To Edit Quantity:</label>
+            <select>
+                <option th:each= "item: ${allItems}"> 
+                    <span th:text="${item.getItemName()}"></span> 
+                     </option>
+            </select>
+
+            <label></label>
+            <input type="number" th:field="*{quantity}"> 
+            <button type="submit" class="btn btn-primary">
+                Submit New Quantity
+              </button>
+
+    </form>
+
+    <form th:object="${item}" th:action="@{/deleteitem}" th:method="post">
+    <label>Delete Item</label>
+            <select>
+                <option th:each= "item: ${allItems}"> 
+                    <span th:text="${item.getItemName()}"></span> 
+                     </option>
+            </select>
+            <button type="submit" class="btn btn-primary">
+                Submit
+              </button>
+</form>
+
+        <form th:object="${item}" th:action="@{/add item}" th:method="post">
+        <label>Add A New Item</label>
+            <input type="text"> 
+            <input type="number"> 
+            <button type="submit" class="btn btn-primary">
+                Submit
+              </button>
+</form>
+
+    <form th:action="@{/admin}" th:method="get">
+        <button type="submit" class="btn btn-secondary">Return to Admin Page</button>
+    </form>
+
+</body>
+</html>

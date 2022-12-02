@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Inventory Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+        <!-- Brand -->
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img th:src="@{/img/H.png}" alt="Logo" width="40" height="40" class="d-inline-block align-text-center">
+                Hospital ERP
+            </a>
+        </div>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin}">Appointments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admin/wards}">Wards</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/inventory}">Inventory</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1>
+        Inventory Page
+    </h1>
+    <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+        <h2 class="text-center"> Inventory Management </h2>
+        <div class="card-body">
+            <table class="table table-striped">
+                <tr>
+                    <th> Item </th>
+                    <th> Quantity </th>
+                </tr>
+                <tr th:each="item: ${allItems}">
+                    <td th:text="${item.getItemName()}">
+                    <td th:text="${item.getQuantity()}">
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+        <div class="card-body text-center">
+            <form th:object="${item}" th:action="@{/editquantity}" th:method="post">
+                <label>Select An Item To Edit Quantity:</label>
+                <select th:field="*{itemName}">
+                    <option th:each="item: ${allItems}" th:value="${item.getItemName()}">
+                        <span th:text="${item.getItemName()}"></span>
+                    </option>
+                </select>
+
+                <label></label>
+                <input type="number" th:field="*{quantity}">
+                <button type="submit" class="btn btn-primary">
+                    Update
+                </button>
+
+            </form>
+
+            <form th:object="${item}" th:action="@{/deleteitem}" th:method="post">
+                <label>Delete Item</label>
+                <select th:field="*{itemName}">
+                    <option th:each="item: ${allItems}" th:value="${item.getItemName()}">
+                        <span th:text="${item.getItemName()}"></span>
+                    </option>
+                </select>
+                <button type="submit" class="btn btn-danger">
+                    Delete
+                </button>
+            </form>
+
+            <form th:object="${item}" th:action="@{/additem}" th:method="post">
+                <label>Add A New Item</label>
+                <input th:field="*{itemName}" type="text">
+                <input th:field="*{quantity}" type="number">
+                <button type="submit" class="btn btn-success">
+                    Add
+                </button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

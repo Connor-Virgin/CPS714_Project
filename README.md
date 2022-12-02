@@ -1,8 +1,10 @@
 # CPS714_Project
-CPS714 java hospital management system project... now a webapp with Spring and Thymeleaf Implemented!
+CPS714 java hospital ERP webapp with Spring and Thymeleaf Implemented!
 
 https://spring.io/
 
 https://www.thymeleaf.org/
 
-Currently when projectApplication.java is run, webapp will be accessable from http://localhost:8080/login
+[1] Build the project in an IDE
+[2] Run projectApplication.java located in [src\main\java\webApp]
+[3] The web application will be accessable from http://localhost:8080/ in your browser!

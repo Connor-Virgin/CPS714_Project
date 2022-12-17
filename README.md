@@ -11,3 +11,5 @@ Requirements: Java and an IDE that supports Maven (Netbeans, VS code, Eclipse, I
 [2] Build and Run projectApplication.java located in [src\main\java\webApp]
 [3] The web application will be accessable from http://localhost:8080/ in your browser!
 [4] Register a Patient or Doctor user to login, Admin access through [Email = Admin, Password = Admin]
+
+Microsoft Azure database url, user, and password must be placed in src/resources/sql.properties to connect to our database 
